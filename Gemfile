@@ -39,8 +39,9 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  gem 'sqlite3',      '1.3.13'
   gem 'rspec-rails', '~> 3.8'
+  gem 'spring-commands-rspec'
 end
 
 group :development do
