@@ -2,5 +2,16 @@
 @import "bootstrap";
 
 body{
-  background-color: #808080;
+  background-color: purple;
 }
+
+.body{
+  padding-top: 54px;
+}
+
+.jumbotron{
+  background-image: url("<%= asset-path("social-media-3846597_1280") %>");
+  background-size: cover;
+  background-position: center 60%;
+}
+
