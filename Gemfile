@@ -22,6 +22,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'sqlite3',      '1.3.13'
   gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
 end
 
