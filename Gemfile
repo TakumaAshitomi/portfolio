@@ -15,6 +15,9 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+gem 'devise'
+gem 'omniauth-twitter'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -22,6 +25,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'sqlite3',      '1.3.13'
   gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
 end
 
