@@ -1,0 +1,20 @@
+<div class="container" >
+  <div class="row" >
+    <% @user.each do |user| %>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" alt="ユーザの画像" src="...">
+        <div class="card-body">
+          <h5 class="card-title">コンテンツの名前</h5>
+          <p class="card-text">ここにコーチングの内容を軽く説明する文章</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">値段</li>
+          <li class="list-group-item">期間</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">詳細ページ</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
