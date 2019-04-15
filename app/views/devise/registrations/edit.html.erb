@@ -4,8 +4,13 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :name%><br />
+    <%= f.text_field :name, autofocus: true  %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -30,10 +35,22 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
-
+  
+  <div class="circle-avatar">
+    <% if current_user.persisted? && current_user.avatar? %>
+      <%= image_tag current_user.avatar.to_s %>
+      <label><%= f.check_box :remove_avatar %> 画像を削除</label>
+    <% else %>
+      <%= image_tag 'no_avatar.png' %>
+      <%= f.hidden_field :avatar_cache %>
+    <% end %>
+      <%= f.file_field :avatar %>
+  </div>
+  
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
+  
 <% end %>
 
 <h3>Cancel my account</h3>

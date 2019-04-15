@@ -15,3 +15,9 @@ body{
   background-position: center 60%;
 }
 
+.circle-avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
