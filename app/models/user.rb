@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable
 
   mount_uploader :avatar, AvatarUploader
-
+  
+  validates :name, presence: true
 end

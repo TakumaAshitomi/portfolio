@@ -1,10 +1,15 @@
-<div class="container" >
-  <div class="row" >
+<div class="container-fluid" >
+    <div class="row" >
     <% @user.each do |user| %>
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" alt="ユーザの画像" src="...">
+      <div class="col">
+      <div class="card w-150">
+        <% if user.persisted? && user.avatar? %>
+          <div class="card-img-top circle-avatar"><%= image_tag user.avatar.to_s %></div>
+        <% else %>
+          <div class="card-img-top circle-avatar"><%= image_tag 'no_avatar.png' %></div>
+        <% end %>
         <div class="card-body">
-          <h5 class="card-title">コンテンツの名前</h5>
+          <h5 class="card-title"><%= user.name %></h5>
           <p class="card-text">ここにコーチングの内容を軽く説明する文章</p>
         </div>
         <ul class="list-group list-group-flush">
@@ -15,6 +20,7 @@
           <a href="#" class="card-link">詳細ページ</a>
         </div>
       </div>
-    <% end %>
-  </div>
+      </div>
+      <% end %>
+    </div>
 </div>
