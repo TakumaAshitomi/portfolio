@@ -7,4 +7,6 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   
   validates :name, presence: true
+  
+  enum role: { admin: 1, member: 2 }
 end

@@ -20,6 +20,7 @@ gem 'dotenv-rails'
 gem 'carrierwave'
 gem 'rmagick', '~> 2.16'
 gem "fog-aws"
+gem 'cancancan'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
