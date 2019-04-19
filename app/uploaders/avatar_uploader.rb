@@ -2,10 +2,12 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
 
-  if Rails.env.production? || Rails.env.staging?
-    storage :fog
-  else
+  if Rails.env.development?
     storage :file
+  elsif Rails.env.test?
+    storage :file
+  else
+    storage :fog
   end
  
   def store_dir
