@@ -1,3 +1,6 @@
+.container{
+   height: 100%;
+}
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
@@ -35,4 +38,8 @@ body{
 
 .bg {
   background-color: #FFFDD0;
+}
+
+.bg-info { 
+ height: auto;
 }
