@@ -4,7 +4,7 @@
     <button class="navbar-toggler" type="button"
       data-toggle="collapse"
       data-target="#navmenu1"
-      aria-controls="navmenu1"
+      aria-controls="navmenu1" 
       aria-expanded="false"
       aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -23,5 +23,6 @@
     </div>
   </nav>
 </header>
-<p class="notice alert-success"><%= notice %></p>
-<p class="alert-danger"><%= alert %></p>
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
