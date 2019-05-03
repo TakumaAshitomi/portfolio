@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-dark bg-dark">
-    <a  class="navbar-brand"><h3><%= link_to "Coaching", root_path %></h3></a>
+    <a  class="navbar-brand"><div class="logo text-center"><%= image_tag("logo-header.png") %></div></a>
     <button class="navbar-toggler" type="button"
       data-toggle="collapse"
       data-target="#navmenu1"
@@ -12,17 +12,19 @@
     <div class="collapse navbar-collapse" id="navmenu1">
       <div class="navbar-nav">
         <% if user_signed_in? %>
-          <a class="nav-item nav-link" ><%= link_to 'ユーザー一覧', users_index_path %></a>          
-          <a class="nav-item nav-link" ><%= link_to 'プロフィール変更', edit_user_registration_path %></a>
-          <a class="nav-item nav-link" ><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></a>
+          <a class="nav-item nav-link" ><%= link_to 'ユーザー一覧', users_index_path, class:"text-light" %></a>          
+          <a class="nav-item nav-link" ><%= link_to 'プロフィール変更', edit_user_registration_path, class:"text-light" %></a>
+          <a class="nav-item nav-link" ><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"text-light" %></a>
         <% else %>
-          <a class="nav-item nav-link" ><%= link_to 'サインアップ', new_user_registration_path %></a>
-          <a class="nav-item nav-link" ><%= link_to 'ログイン', new_user_session_path %></a>
+          <a class="nav-item nav-link" ><%= link_to 'サインアップ', new_user_registration_path, class:"text-light" %></a>
+          <a class="nav-item nav-link" ><%= link_to 'ログイン', new_user_session_path, class:"text-light" %></a>
         <% end %>
       </div>
     </div>
   </nav>
 </header>
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: "#{key}") %>
-  <% end %>
+<% if notice %>
+  <p class="notice"><%= notice %></p>
+<% elsif alert %>
+  <p class="alert"><%= alert %></p>
+<% end %>

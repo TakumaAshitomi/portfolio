@@ -13,9 +13,10 @@ body{
 }
 
 .jumbotron{
-  background-image: url("<%= asset-path("social-media-3846597_1280") %>");
+  background-image: image-url("chalkboard-green-pattern-01.jpg");
   background-size: cover;
   background-position: center 60%;
+  color: FFF;
 }
 
 .circle-avatar img {
@@ -43,3 +44,4 @@ body{
 .bg-info { 
  height: auto;
 }
+

@@ -1,27 +1,11 @@
-
-  <div class="jumbotron jumbotron-fluid" >
+  <div class="jumbotron jumbotron-fluid min-vh-100">
     <div class="container">
-      <h1 class="display-4">こんにちは!</h1>
-      <p class="lead">Coachingは、あなたのニーズに合わせてコーチングを提供します。</p>
-      <a class="btn btn-outline-primary btn-lg" href="#" role="button">新規登録</a>
-      <a class="btn btn-outline-primary btn-lg" href="#" role="button">検索してみよう！</a>
+      <div class="logo text-center mb-5"><%= image_tag("logo.png") %></div>
+      <h1 class="display-4 text-center text-light">ようこそ！</h1>
+      <p class="lead text-center m-5 text-light">Coachingは、あなたの活動をサポートします。</p>
+      <div class="text-center">
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-light btn-lg center-block m-2"%>
+        <%= link_to "検索してみよう！", new_user_registration_path, class: "btn btn-outline-light btn-lg center-block"%>
+      </div>
     </div>
   </div>
-  <div class="container">
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" alt="カードの画像" src="...">
-  <div class="card-body">
-    <h5 class="card-title">カードのタイトル</h5>
-    <p class="card-text">カードのタイトルに基づいて、カードのコンテンツの大部分を占める簡単なサンプルテキスト。</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">リスト1</li>
-    <li class="list-group-item">リスト2</li>
-    <li class="list-group-item">リスト3</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">リンク1</a>
-    <a href="#" class="card-link">リンク2</a>
-  </div>
-</div>
-  </div><!-- /.container -->
