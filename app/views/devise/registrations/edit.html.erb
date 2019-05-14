@@ -6,7 +6,7 @@
 
   <div class="field text-center form-group m-4">
     <%= f.label "ユーザー名"%><br />
-    <%= f.text_field :name, autofocus: true, class: "form-control-lg", placeholder:"ユーザ名" %>
+    <%= f.text_field :name, autofocus: true, class: "form-control-lg", placeholder: "ユーザ名" %>
   </div>
 
   <div class="field text-center m-4">
@@ -20,7 +20,7 @@
 
   <div class="field text-center m-4">
     <%= f.label "新しいパスワード" %> <i>(パスワードを変更する場合は新しいパスワードを入力してください。)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: "form-control-lg", placeholder:"新しいパスワードを入力" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control-lg", placeholder: "新しいパスワードを入力" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> 文字以上で入力してください。</em>
@@ -29,12 +29,12 @@
 
   <div class="field text-center m-4">
     <%= f.label "新しいパスワードを再度入力" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control-lg", placeholder:"新しいパスワードを再入力" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control-lg", placeholder: "新しいパスワードを再入力" %>
   </div>
 
   <div class="field text-center m-4">
     <%= f.label "現在のパスワード" %> <i>(必ず入力してください。)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control-lg", placeholder:"現在のパスワード" %>
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control-lg", placeholder: "現在のパスワード" %>
   </div>
   
   <div class="circle-avatar text-center m-4">
@@ -49,14 +49,14 @@
   </div>
   
   <div class="text-center mb-4">
-    <%= f.submit "Update",class:"btn btn-outline-dark btn-lg center-block" %>
+    <%= f.submit "更新", class: "btn btn-outline-dark btn-lg center-block" %>
   </div>
   
 <% end %>
 
 <h3 class="text-center">アカウントを削除</h3>
 <div class="text-center mb-4">
-  <%= button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "本当に削除しますか？" }, method: :delete, class:"btn btn-outline-dark btn-sm center-block mb-4" %></p>
+  <%= button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-outline-dark btn-sm center-block mb-4" %></p>
 </div>
 <%= link_to "Back", :back %>
 </div>

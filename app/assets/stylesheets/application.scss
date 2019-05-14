@@ -28,7 +28,6 @@ body{
 
 .card-img-top {
   padding-top:  10px;
-  padding-left: 60px;
 }
 
 .avatar{
@@ -38,7 +37,11 @@ body{
 }
 
 .bg {
-  background-color: #FFFDD0;
+  background-image: image-url("03-light-carpet.png");
+}
+
+.bg-card {
+  background-image: image-url("04-polish-wood.png");
 }
 
 .bg-info { 

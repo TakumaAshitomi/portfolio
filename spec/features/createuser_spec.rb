@@ -5,11 +5,11 @@ describe "Create Account", type: :feature do
     #Access signup page
     visit new_user_registration_path
     #fill in  name,email, password, password_confirmation
-    fill_in   "Name",                    with: "testuser"
-    fill_in   "Email",                   with: "example@tutorial.com"
-    fill_in   "Password",                with: "password"
-    fill_in   "Password confirmation",   with: "password"
-    click_on  "Sign up"
+    fill_in   "user_name",                    with: "testuser"
+    fill_in   "user_email",                   with: "example@tutorial.com"
+    fill_in   "user_password",                with: "password"
+    fill_in   "user_password_confirmation",   with: "password"
+    click_on  "新規登録"
     expect(page).to have_content "確認メールを登録したメールアドレス宛に送信しました。リンクを開いてアカウントを有効にして下さい。"
   end
   
@@ -21,9 +21,9 @@ describe "Session_path", type: :feature do
     it "can login " do
       visit new_user_session_path
       @user.confirm
-      fill_in   "Email",                   with: "example@test.com"
-      fill_in   "Password",                with: "password"
-      click_on  "Log in"
+      fill_in   "user_email",                   with: "example@test.com"
+      fill_in   "user_password",                with: "password"
+      click_button "ログイン"
       expect(page).to have_content "ログインしました。"
     end
   end
@@ -31,9 +31,9 @@ describe "Session_path", type: :feature do
     it "can't login" do
       visit new_user_session_path
       @user.confirm
-      fill_in   "Email",                     with: "wrong@mail.address"
-      fill_in   "Password",                  with: "wrong password"
-      click_on  "Log in"
+      fill_in   "user_email",                     with: "wrong@mail.address"
+      fill_in   "user_password",                  with: "wrong password"
+      click_button "ログイン"
       expect(page).to have_content "メールアドレスまたはパスワードが無効です。"
     end
   end
