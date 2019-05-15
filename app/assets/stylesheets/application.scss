@@ -1,11 +1,9 @@
-.container{
-   height: 100%;
-}
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
-body{
-  
+.pagination {
+  text-align: center;
+  display: inline-flex;
 }
 
 .body{

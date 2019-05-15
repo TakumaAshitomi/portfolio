@@ -1,7 +1,7 @@
 <div class="container-fluid" >
     <div class="row" >
-    <% @user.each do |user| %>
-      <div class="col-sm-3">
+    <% @users.each do |user| %>
+      <div class="col-lg-3 col-12 col-sm-6">
         <div class="card bg-card m-2">
           <div class="card-img-top circle-avatar text-center"><%= image_tag user_image(user) %></div>
           <div class="card-body">
@@ -18,5 +18,10 @@
         </div>
       </div>
       <% end %>
+    </div>
+    <div class="container">
+    <div class="fixed-bottom mb-5 text-center">
+        <%= paginate @users %>
+    </div>
     </div>
 </div>

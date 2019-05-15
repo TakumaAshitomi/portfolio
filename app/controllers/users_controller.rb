@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @user = User.all
+    @users = User.page(params[:page]).per(4)
   end
   
   private
