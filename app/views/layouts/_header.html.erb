@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navmenu1">
       <div class="navbar-nav">
         <% if user_signed_in? %>
-          <a class="nav-item nav-link" ><%= link_to 'ユーザー一覧', users_index_path, class:"text-light" %></a>          
+          <a class="nav-item nav-link" ><%= link_to 'ユーザー一覧', users_path, class:"text-light" %></a>          
           <a class="nav-item nav-link" ><%= link_to 'プロフィール変更', edit_user_registration_path, class:"text-light" %></a>
           <a class="nav-item nav-link" ><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"text-light" %></a>
         <% else %>
