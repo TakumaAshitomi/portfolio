@@ -19,7 +19,13 @@
   <% end %>
 
   <div class="field text-center m-4">
-    <%= f.label "新しいパスワード" %> <i>(パスワードを変更する場合は新しいパスワードを入力してください。)</i><br />
+    <%= f.label "現在のパスワード" %> <i>(必ず入力してください。)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control-lg", placeholder: "現在のパスワード" %>
+  </div>
+
+  <div class="field text-center m-4">
+    <%= f.label "新しいパスワード" %> 
+    <i><br>(パスワードを変更する場合は新しいパスワードを入力してください。)</i><br />
     <%= f.password_field :password, autocomplete: "new-password", class: "form-control-lg", placeholder: "新しいパスワードを入力" %>
     <% if @minimum_password_length %>
       <br />
@@ -30,11 +36,6 @@
   <div class="field text-center m-4">
     <%= f.label "新しいパスワードを再度入力" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control-lg", placeholder: "新しいパスワードを再入力" %>
-  </div>
-
-  <div class="field text-center m-4">
-    <%= f.label "現在のパスワード" %> <i>(必ず入力してください。)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control-lg", placeholder: "現在のパスワード" %>
   </div>
   
   <div class="circle-avatar text-center m-4">
