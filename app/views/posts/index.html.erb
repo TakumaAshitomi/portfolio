@@ -1,1 +1,27 @@
-this is posts/ page
+<div class="container-fluid" >
+    <div class="row" >
+    <% @posts.each do |post| %>
+      <div class="col-lg-3 col-12 col-sm-6">
+        <div class="card bg-card m-2">
+          <div class="card-img-top circle-avatar text-center"><%= #image_tag user_image(user) %></div>
+          <div class="card-body">
+            <h5 class="card-title text-center text-dark"><%= ユーザーへのリンク#link_to user.name, "/users/#{user.id}", class: "text-dark h2" %></h5>
+            <p class="card-text">ここにコーチングの内容を軽く説明する文章</p>
+          </div>
+          <ul class="list-group list-group-flush bg-card">
+            <li class="list-group-item bg-card">値段</li>
+            <li class="list-group-item bg-card">期間</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">詳細ページ</a>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="container">
+    <div class="mb-5 text-center">
+        <%= paginate @posts %>
+    </div>
+    </div>
+</div>
