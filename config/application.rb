@@ -16,5 +16,14 @@ module Portfolio
     # -- all .rb files in that directory are automatically loaded.
     Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
     config.assets.initialize_on_precompile = false
+    
+    config.generators do |g|
+      g.test_framework :rspec,
+      fixtures: false,
+      view_specs: false,
+      helper_specs: false,
+      routing_specs: false
+    end
+    
   end
 end
