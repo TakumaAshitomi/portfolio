@@ -32,18 +32,39 @@ RSpec.describe User, type: :model do
     expect(@user.errors[:password]).to include("を入力してください")
   end
   
-  it "allows two users registrate with same name" do
-    @user.save
-    user2=@user.dup
-    user2.email="example2@mail.com"
-    user2.save
-    expect(user2).to be_valid
+  it "is valid user_profile update to blank" do
+    @user.user_profile = ("")
+    expect(@user).to be_valid
+  end
+
+  it "disallow user_profile over 150characters" do
+    @user.user_profile = ("a")*151
+    @user.valid?
+    expect(@user.errors[:user_profile]).to include("は150文字以内で入力してください")
   end
   
-  it "disallows two users ragistrate with same email" do
-    @user.save
-    user2=@user.dup
-    user2.save
-    expect(user2).to_not be_valid
+  context "when there are two users" do
+    
+    before do
+      @user2=User.new(
+        name:     "testuser",
+        email:    "example@mail.com",
+        password: "password"
+      )
+    end
+    
+    it "allows two users registrate with same items exept email" do
+      @user.save
+      @user2.email="example2@mail.com"
+      @user2.save
+      expect(@user2).to be_valid
+    end
+  
+    it "disallow two users ragistrate with same email" do
+      @user.save
+      @user2.save
+      expect(@user2).to_not be_valid
+    end
   end
+
 end

@@ -61,3 +61,10 @@
 </div>
 <%= link_to "Back", :back %>
 </div>
+
+<script type="text/javascript">
+    $(function () {
+        $('.limited').maxlength({
+            'feedback' : '.charsLeft' //残り数を表示する場所
+        });
+    });
