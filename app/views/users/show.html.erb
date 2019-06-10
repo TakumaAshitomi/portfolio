@@ -23,15 +23,21 @@
             <%= image_tag(user_image(@user), :class => "avatar") %>
             <br>
             <div class="mt-5 py-4 bg-light" style="min-height: 220px">
-              <%= form_for(@user, url: "/users/#{params[:id]}", method: "post") do |f| %>
-                <div class="field text-center form-group m-4">
-                  <% @user.errors.full_messages.each do |message| %>
-                    <li class="info"><%= message %></li>
-                  <% end %>
-                  <%= f.label "プロフィール"%><br />
-                  <%= f.text_area :user_profile, autofocus: true, maxlength: "150", class: "form-control", placeholder: "150文字以内で入力してください。", rows: "3" %>
-                  <%= f.submit %>
-                </div>
+              <% if current_user_path?(params[:id]) %>
+                <%= form_for(@user, url: "/users/#{params[:id]}", method: "post") do |f| %>
+                  <div class="field text-center form-group m-4">
+                    <% @user.errors.full_messages.each do |message| %>
+                      <li class="info"><%= message %></li>
+                    <% end %>
+                    <%= f.label "プロフィール"%><br />
+                    <%= f.text_area :user_profile, autofocus: true, maxlength: "150", class: "form-control", placeholder: "150文字以内で入力してください。", rows: "3" %>
+                    <%= f.submit %>
+                  </div>
+                <% end %>
+              <% else %>
+                <p class="lead">
+                  <%= @user.user_profile %>
+                </p>
               <% end %>
             </div>
           </div>

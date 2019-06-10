@@ -1,6 +1,7 @@
 require "rails_helper"
 
 describe "Create Account", type: :feature do
+  
   it "Signup" do
     #Access signup page
     visit new_user_registration_path
@@ -14,19 +15,22 @@ describe "Create Account", type: :feature do
   end
   
 describe "Session_path", type: :feature do  
+  
   before do
     @user = create(:user)
   end
+  
   context "valid email,password" do
     it "can login " do
       visit new_user_session_path
       @user.confirm
-      fill_in   "user_email",                   with: "example@test.com"
-      fill_in   "user_password",                with: "password"
+      fill_in   "user_email",                   with: @user.email
+      fill_in   "user_password",                with: @user.password
       click_button "ログイン"
       expect(page).to have_content "ログインしました。"
     end
   end
+  
   context "invalid email" do
     it "can't login" do
       visit new_user_session_path
@@ -37,5 +41,6 @@ describe "Session_path", type: :feature do
       expect(page).to have_content "メールアドレスまたはパスワードが無効です。"
     end
   end
+  
 end
 end
