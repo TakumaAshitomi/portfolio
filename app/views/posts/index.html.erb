@@ -1,17 +1,18 @@
 <div class="container-fluid" >
     <div class="row" >
     <% @posts.each do |post| %>
-      <div class="col-lg-3 col-12 col-sm-6">
+      <div class="col-12 col-md-6 col-lg-3">
         <div class="card bg-card m-2">
-          <div class="card-img-top circle-avatar text-center"><%= image_tag user_image(post.user) %></div>
-          <div class="card-body">
-            <h5 class="card-title text-center text-dark"><%= link_to post.title, "/users/#{post.user_id}", class: "text-dark h2" %></h5>
-            <p class="card-text"><%= post.description %></p>
+          <div class="card-img-top">
+            <div class="row">
+              <div class="col-4 circle-avatar-sm"><%= image_tag user_image(post.user),class:"mt-2 ml-4" %></div>
+              <div class="col-8 card-name text-truncate font-weight-bold"><%= post.user.name %></div>
+            </div>
           </div>
-          <ul class="list-group list-group-flush bg-card">
-            <li class="list-group-item bg-card">値段</li>
-            <li class="list-group-item bg-card">期間</li>
-          </ul>
+          <div class="card-body">
+            <h5 class="card-title text-center text-dark"><%= link_to post.title, "/users/#{post.user_id}", class: "text-dark h3" %></h5>
+            <p class="card-text bg-light text-truncate" style="min-height: 100px"><%= post.description %></p>
+          </div>
           <div class="card-body">
             <a class="card-link"><%= link_to "詳細ページ", "/posts/#{post.id}" %> </a>
           </div>
