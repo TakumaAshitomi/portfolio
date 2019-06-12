@@ -5,12 +5,12 @@
         <div class="card bg-card m-2">
           <div class="card-img-top">
             <div class="row">
-              <div class="col-4 circle-avatar-sm"><%= image_tag user_image(post.user),class:"mt-2 ml-4" %></div>
-              <div class="col-8 card-name text-truncate font-weight-bold"><%= post.user.name %></div>
+              <div class="col-4 ml-4 circle-avatar-sm"><%= image_tag user_image(post.user),class:"mt-2 ml-2" %></div>
+              <div class="col card-name text-truncate font-weight-bold d-inline-flex"><%= link_to post.user.name, "/users/#{post.user_id}", class: "text-dark h3 text-truncate" %></div>
             </div>
           </div>
           <div class="card-body">
-            <h5 class="card-title text-center text-dark"><%= link_to post.title, "/users/#{post.user_id}", class: "text-dark h3" %></h5>
+            <h5 class="card-title text-center text-dark"><%= link_to post.title, "/posts/#{post.id}", class: "text-dark h3" %></h5>
             <p class="card-text bg-light text-truncate" style="min-height: 100px"><%= post.description %></p>
           </div>
           <div class="card-body">
