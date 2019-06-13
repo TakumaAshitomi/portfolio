@@ -22,6 +22,8 @@ gem 'rmagick', '~> 2.16'
 gem "fog-aws"
 gem 'cancancan'
 gem 'kaminari'
+gem 'ckeditor', '4.1.3'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
