@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
+  
   before do
+    @user = build(:user)
     @post = build(:post)
   end
 
@@ -33,14 +35,26 @@ RSpec.describe Post, type: :model do
     expect(@post.errors[:description]).to include("は400文字以内で入力してください")
   end
 
-    context "when there are two posts" do
-      before do 
-        @post2 = build(:post)
-      end
+  context "when there are two posts" do
+    
+    before do 
+      @post2 = build(:post)
+      @user.save
+    end
       
-      it "allows same user create two posts with different title"
-        expect(@post2).to be_valid
-      end
-      
-      
+    it "allows same user create two posts with different title" do
+      expect(@post2).to be_valid
+    end
+    
+    it "disallows same user create two posts with different title" do
+      @post2.title = @post.title
+      expect(@post2).to be_valid
+    end
+    
+    it "alllow two users create posts each same title" do
+      expect(@post2).to be_valid
+    end
+  end
+     
+
 end
