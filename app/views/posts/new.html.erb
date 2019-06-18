@@ -1,6 +1,12 @@
 <%= form_for(@post) do |f| %>
-  <%= f.text_area :title %>
-  
-  <%= f.cktext_area :description %>
-  <%= f.submit %>
+  <% @post.errors.full_messages.each do |message| %>
+    <li class="alert alert-warning"><%= message %></li>
+  <% end %>
+  <div class="form-group m-4">
+    <%= f.text_field :title, class: "form-control form-control-sm", id: "title", placeholder: "タイトルを入力" %>
+  </div>
+  <div class="form-group m-4">
+    <%= f.cktext_area :description %>
+  </div>
+  <%= f.submit class:"btn btn-primary ml-4" %>
 <% end %>

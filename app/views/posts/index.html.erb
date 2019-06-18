@@ -11,7 +11,7 @@
           </div>
           <div class="card-body">
             <h5 class="card-title text-center text-dark"><%= link_to post.title, "/posts/#{post.id}", class: "text-dark h3" %></h5>
-            <p class="card-text bg-light text-truncate" style="min-height: 100px"><%= post.description %></p>
+            <div class="card-text bg-light text-truncate" style="height: 100px"><%== post.description %></div>
           </div>
           <div class="card-body">
             <a class="card-link"><%= link_to "詳細ページ", "/posts/#{post.id}" %> </a>

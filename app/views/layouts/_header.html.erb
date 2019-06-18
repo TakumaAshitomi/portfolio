@@ -16,6 +16,7 @@
           <a class="nav-item nav-link" ><%= link_to 'ユーザー一覧', users_path, class:"text-light" %></a>          
           <a class="nav-item nav-link" ><%= link_to 'プロフィール変更', edit_user_registration_path, class:"text-light" %></a>
           <a class="nav-item nav-link" ><%= link_to 'コーチング一覧', posts_path, class:"text-light" %></a>
+          <a class="nav-item nav-link" ><%= link_to 'コーチング投稿', posts_new_path, class:"text-light" %></a>
           <a class="nav-item nav-link" ><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"text-light" %></a>
         <% else %>
           <a class="nav-item nav-link" ><%= link_to 'サインアップ', new_user_registration_path, class:"text-light" %></a>
