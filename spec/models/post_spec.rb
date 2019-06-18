@@ -48,13 +48,17 @@ RSpec.describe Post, type: :model do
     
     it "disallows same user create two posts with different title" do
       @post2.title = @post.title
-      expect(@post2).to be_valid
+      @post.save
+      expect(@post2).to_not be_valid
     end
     
     it "alllow two users create posts each same title" do
+      @user2 = build(:user)
+      @user2.save
+      @post2.title = @post.title
+      @post2.user_id = 2
       expect(@post2).to be_valid
     end
   end
-     
-
+  
 end
