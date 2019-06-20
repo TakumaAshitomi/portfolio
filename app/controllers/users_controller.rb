@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     @user  = User.find(params[:id])
     @page_id = params[:id]
+    @activities = PublicActivity::Activity.all
   end
   
   def index

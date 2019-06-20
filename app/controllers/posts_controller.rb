@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   def create
     @post.user_id = current_user.id if @post = Post.new(post_params)
     if @post.save
+      @post.create_activity :create, owner: current_user
       redirect_to "/posts"
     else
       render "new"

@@ -213,3 +213,8 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+activity:
+  post:
+    create: 'Article has been created'
+    update: 'Someone has edited the article'
+    destroy: 'Some user removed an article!'

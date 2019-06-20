@@ -24,6 +24,7 @@ gem 'cancancan'
 gem 'kaminari'
 gem 'ckeditor', '4.1.3'
 gem 'mini_magick'
+gem 'public_activity'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

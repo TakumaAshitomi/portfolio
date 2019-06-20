@@ -205,3 +205,8 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  activity:
+  article:
+    create: 'Article has been created'
+    update: 'Someone has edited the article'
+    destroy: 'Some user removed an article!'
