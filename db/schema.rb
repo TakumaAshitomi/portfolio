@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_221346) do
+ActiveRecord::Schema.define(version: 2019_06_21_074703) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 2019_06_19_221346) do
     t.string "title"
     t.text "description"
     t.integer "user_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "followed_id"
   end
 
   create_table "users", force: :cascade do |t|

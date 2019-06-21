@@ -20,6 +20,14 @@ class UsersController < ApplicationController
     end
   end
   
+  def subscribe
+    @subscribe = Subscription.new
+    @subscribe.user_id = current_user.id
+    @subscribe.followed_id = params[:id]
+    @subscribe.save
+    redirect_to "/users/#{params[:id]}"
+  end
+  
   private
     def sign_in_required
       redirect_to new_user_session_url unless user_signed_in?
@@ -27,5 +35,9 @@ class UsersController < ApplicationController
   
     def only_edit_user_profile
       params.require(:user).permit(:user_profile)
+    end
+    
+    def subs_params
+      params.require(:subscription).permit(:user_id,:followed_id)
     end
 end

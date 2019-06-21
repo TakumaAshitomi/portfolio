@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :posts
+  has_many :subscription
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
