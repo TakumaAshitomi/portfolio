@@ -6,13 +6,12 @@
         <a class="nav-item nav-link active badge-secondary text-light" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
         <!--<a class="nav-item nav-link badge-secondary" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>-->
         <a class="nav-link badge-secondary" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Activity</a>
-        <%= link_to "購読", "/users/#{params[:id]}/subs", class: "nav-link badge-secondary", method: :post %>
         <%= link_to "新規投稿", "/posts/new", class: "nav-link badge-secondary" %>
       </div>
       <% else %>
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-item nav-link active badge-secondary text-light" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-        <a class="nav-item nav-link badge-secondary" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">サブスクライブ</a>
+        <%= link_to "購読", "/users/#{params[:id]}/subs", class: "nav-link badge-secondary", method: :post %>
       </div>
       <% end %>
     </div>
