@@ -3,10 +3,7 @@ require 'rails_helper'
 RSpec.describe Subscription, type: :model do
   
   before do
-    5.times do
-    create(:user)
-    end
-    @subs = build(:subscription)
+    @subs = create(:subscription)
   end
   
   it "is invalid without a user_id" do
@@ -26,7 +23,7 @@ RSpec.describe Subscription, type: :model do
   context "user has two subs" do
     
     before do 
-      @subs2 = build(:subscription)
+      @subs2 = create(:subscription)
     end
     
     it "disallow same subs" do
