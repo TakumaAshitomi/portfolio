@@ -25,6 +25,7 @@ gem 'kaminari'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'mini_magick'
 gem 'public_activity'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -34,7 +35,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
-  gem 'faker'
 end
 
 group :development do
