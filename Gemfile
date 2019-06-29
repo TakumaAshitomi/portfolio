@@ -22,7 +22,7 @@ gem 'rmagick', '~> 2.16'
 gem "fog-aws"
 gem 'cancancan'
 gem 'kaminari'
-gem 'ckeditor', '4.1.3'
+gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'mini_magick'
 gem 'public_activity'
 
