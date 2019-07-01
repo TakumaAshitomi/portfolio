@@ -4,6 +4,7 @@ Rails.application.routes.draw do
  get  "users"     => "users#index"
  post "users/:id" => "users#update"
  post "users/:id/subs" => "users#subscribe"
+ delete "users/:id/subs" => "users#unsubscribe"
  get  "users/:id" => "users#show"
  get  "posts"     => "posts#index"
  get  "posts/new" => "posts#new"

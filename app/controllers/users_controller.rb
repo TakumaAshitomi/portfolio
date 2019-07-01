@@ -28,6 +28,12 @@ class UsersController < ApplicationController
     redirect_to "/users/#{params[:id]}"
   end
   
+  def unsubscribe
+    @subscribe = Subscription.find_by(user_id: current_user.id, followed_id: params[:id])
+    @subscribe.destroy
+    redirect_to "/users/#{params[:id]}"
+  end
+  
   private
     def sign_in_required
       redirect_to new_user_session_url unless user_signed_in?
