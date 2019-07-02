@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def show
     @user  = User.find(params[:id])
     @page_id = params[:id]
-    @activities = PublicActivity::Activity.order(created_at: :desc).where(owner_id: Subscription.where(user_id: current_user.id), owner_type: "User")
+    @activities = PublicActivity::Activity.order(created_at: :desc).where(owner_id: Subscription.where(user_id: current_user.id).pluck(:followed_id), owner_type: "User")
   end
   
   def index
