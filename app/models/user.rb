@@ -1,6 +1,8 @@
 class User < ApplicationRecord
+  
   has_many :posts
   has_many :subscription
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
@@ -11,4 +13,5 @@ class User < ApplicationRecord
   validates :user_profile, length: { maximum: 150}
   
   enum role: { admin: 1, member: 2 }
+  
 end
