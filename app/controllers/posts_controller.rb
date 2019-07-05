@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id if @post = Post.new(post_params)
     if @post.save
       @post.create_activity :create, owner: current_user
+      flash[:notice] = "作成しました。"
       redirect_to "/posts"
     else
       render "new"
