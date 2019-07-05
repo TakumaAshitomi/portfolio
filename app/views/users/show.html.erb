@@ -4,9 +4,9 @@
       <% if current_user_path?(params[:id]) %>
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-item nav-link active badge-secondary text-light" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-        <!--<a class="nav-item nav-link badge-secondary" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>-->
         <a class="nav-link badge-secondary" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Activity</a>
         <%= link_to "新規投稿", "/posts/new", class: "nav-link badge-secondary" %>
+        <a class="nav-link badge-secondary" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">投稿管理</a>
       </div>
       <% else %>
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -46,19 +46,28 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">aaa</div>
         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-            <div class="container">
-              <% @activities.first(5).each do |activity| %>
-                <div class="row bg-light m-3 rounded shadow-lg">
-                  <div class="col-sm-3"><%=  image_tag user_image(activity.owner), class:"avatar-sm" %></div>
-                  <div class="col-4 col-sm-5 align-self-center h5"><%=  link_to activity.trackable.title, "/posts/#{activity.trackable.id}", class: "text-reset" %></div>
-                  <div class="col-4 align-self-center"><%= link_to activity.owner.name, "/users/#{activity.owner.id}", class: "text-reset" %></div>
-                </div>
-              <% end %>
-            </div> 
+          <div class="container">
+            <% @activities.first(5).each do |activity| %>
+              <div class="row bg-light m-3 rounded shadow-lg">
+                <div class="col-sm-3"><%=  image_tag user_image(activity.owner), class:"avatar-sm" %></div>
+                <div class="col-4 col-sm-5 align-self-center h5"><%=  link_to activity.trackable.title, "/posts/#{activity.trackable.id}", class: "text-reset" %></div>
+                <div class="col-4 align-self-center"><%= link_to activity.owner.name, "/users/#{activity.owner.id}", class: "text-reset" %></div>
+              </div>
+            <% end %>
+          </div> 
         </div>        
-        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div> 
+        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+          <div class="container">
+            <% @myposts.each do |post| %>
+              <div class="row bg-light m-3 rounded shadow-lg">
+                <div class="col-sm-3"><%=  image_tag user_image(post.user), class:"avatar-sm" %></div>
+                <div class="col-4 col-sm-5 align-self-center h5"><%=  link_to post.title, "/posts/#{post.id}", class: "text-reset" %></div>
+                <div class="col-4 align-self-center"><%= link_to "編集", "/posts/#{post.id}/edit", class: "text-reset" %></div>
+              </div>
+            <% end %>
+          </div>
+        </div> 
       </div>
     </div>
 </div>

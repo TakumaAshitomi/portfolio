@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     @page_id = params[:id]
     @activities = PublicActivity::Activity.order(created_at: :desc).where(owner_id: Subscription.where(user_id: current_user.id).pluck(:followed_id), owner_type: "User")
+    @myposts = Post.where(user_id: current_user.id)
   end
   
   def index

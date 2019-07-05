@@ -1,0 +1,31 @@
+<script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
+
+<div class="container">
+  <%= form_for(@post, url: "/posts/#{@post.id}", method: "post" ) do |f| %>
+  
+    <% @post.errors.full_messages.each do |message| %>
+      <li class="alert alert-warning"><%= message %></li>
+    <% end %>
+    
+    <%= flash[:notice] if flash[:notice] %>
+    
+    <div class="form-group m-4">
+      <%= f.text_field :title, class: "form-control form-control-sm", id: "title", placeholder: "タイトルを入力" %>
+    </div>
+    
+    <div class="form-group m-4">
+        <%= f.text_area :description, id: "editor", class:"form-control", placeholder: "#{@post.description}", style: "width: 690px;" %>
+    </div>
+  
+    <%= f.submit "変更", class:"btn btn-primary ml-4" %>
+    
+  <% end %>
+</div>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
