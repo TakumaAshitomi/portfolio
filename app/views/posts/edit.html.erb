@@ -18,7 +18,7 @@
     </div>
   
     <%= f.submit "変更", class:"btn btn-primary ml-4" %>
-    
+    <%= link_to '削除', "/posts/#{@post.id}", method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger ml-4" %>
   <% end %>
 </div>
 

@@ -33,6 +33,13 @@ class PostsController < ApplicationController
     flash[:notice] = "変更しました。"
     redirect_to "/posts/#{@post.id}"
   end
+  
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = "削除しました"
+    redirect_to "/users/#{current_user.id}"
+  end
 
   private
     def post_params
