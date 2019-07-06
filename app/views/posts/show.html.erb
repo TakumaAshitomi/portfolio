@@ -1,10 +1,10 @@
-<div class="container bg-card">
+<div class="container bg-card min-vh-100">
   <div class="d-flex flex-column">
     <div class="p-2 text-center">
       <%= image_tag user_image(@post.user),class:"avatar-sm" %>
-      <span class="h4"><%= @post.user.name %></span>
+      <span class="h4"><%= link_to @post.user.name, "/users/#{@post.user.id}", class: "text-reset" %></span>
     </div>
     <div class="p-2  h1 text-center"><%= @post.title %></div>
-    <div class="p-2 flex-grow-1 text-center bg-light" style="overflow-wrap: break-word;"><%== @post.description %></div>
+    <div class="p-2 flex-grow-1 text-center bg-light" style="overflow-wrap: break-word; min-height: 500px;"><%== @post.description %></div>
   </div>
 </div>
