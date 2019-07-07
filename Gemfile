@@ -29,8 +29,8 @@ gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
+  gem 'capybara'
+  gem 'webdrivers'
   gem 'sqlite3',      '1.3.13'
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'

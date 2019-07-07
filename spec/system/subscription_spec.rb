@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Subscription", type: :feature do
+RSpec.feature "Subscription", type: :system do
   scenario "User subscribe a user" do
     @user = create(:user)
     @user2 = create(:user)

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "User", type: :feature do
+RSpec.feature "User", type: :system do
   
   scenario "Create a new user" do
       #Access signup page
