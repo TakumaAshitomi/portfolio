@@ -12,9 +12,9 @@
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-item nav-link active badge-secondary text-light" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
         <% if already_subscribed?(params[:id]) %>
-        <%= link_to "購読", "/users/#{params[:id]}/subs", class: "nav-link badge-secondary", method: :post %>
+        <%= link_to "購読", "/users/#{params[:id]}/subs", id: "subs", class: "nav-link badge-secondary", method: :post, remote: true %>
         <% else %>
-        <%= link_to "購読を解除", "/users/#{params[:id]}/subs", class: "nav-link badge-secondary", method: :delete %>
+        <%= link_to "購読を解除", "/users/#{params[:id]}/subs", id: "unsubs", class: "nav-link badge-secondary", method: :delete, remote: true %>
         <% end %>
       </div>
       <% end %>
@@ -71,3 +71,15 @@
       </div>
     </div>
 </div>
+
+<script>
+  javascript
+  $('.delete_button').bind("ajax:complete", function(xhr, response, status){
+    result = JSON.parse(response.responseText)[0]
+    if(status=="success"){
+      alert('成功したよ！' + result["id"]) + "番のデータが消えたよ！！")
+    }else{
+      alert("エラーが起きたので削除できませんでした")
+    }
+  })
+</script>

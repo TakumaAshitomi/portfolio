@@ -26,13 +26,21 @@ class UsersController < ApplicationController
     @subscribe.user_id = current_user.id
     @subscribe.followed_id = params[:id]
     @subscribe.save
-    redirect_to "/users/#{params[:id]}"
+    #redirect_to "/users/#{params[:id]}"
+    respond_to do |format|
+      format.html { redirect_to "/users/#{params[:id]}" }
+      format.js
+    end
   end
   
   def unsubscribe
     @subscribe = Subscription.find_by(user_id: current_user.id, followed_id: params[:id])
     @subscribe.destroy
-    redirect_to "/users/#{params[:id]}"
+    #redirect_to "/users/#{params[:id]}"
+    respond_to do |format|
+      format.html { redirect_to "/users/#{params[:id]}" }
+      format.js
+    end
   end
   
   private
