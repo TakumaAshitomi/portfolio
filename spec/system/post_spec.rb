@@ -24,6 +24,18 @@ RSpec.feature "Post", type: :system do
     expect(page).to have_content "変更しました。"
   end
   
+  scenario "can delete by owner", js: true do
+    @user = create(:user)
+    @user.confirm
+    login_as(@user)
+    @post = create(:post)
+    @post.user_id = @user.id
+    visit "/posts/#{@post.id}/edit"
+    click_on "削除"
+    page.driver.browser.switch_to.alert.accept
+    expect(page).to have_content "削除しました"
+  end
+  
   scenario "can see by followed user", js: true do 
     @user = create(:user)
     @user.confirm
