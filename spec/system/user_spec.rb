@@ -77,4 +77,11 @@ RSpec.feature "User", type: :system do
     click_on "更新する"
     expect(page).to have_content "update profile"
   end
+  
+  scenario "Not login user can't open page for login users" do
+    visit "/users/1"
+    expect(page).to have_content "ログインしてください。"
+    visit edit_user_registration_path
+    expect(page).to have_content "ログインまたは登録が必要です。"
+  end
 end

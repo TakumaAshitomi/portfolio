@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  #before_action :sign_in_required, only: [:new,:create,:edit,:update,:destoroy]
+  
   def show
     @post = Post.find(params[:id])
   end
@@ -42,7 +44,15 @@ class PostsController < ApplicationController
   end
 
   private
+  
     def post_params
       params.require(:post).permit(:title,:description)
+    end
+    
+    def sign_in_required
+      unless user_signed_in?
+        flash[:notice] = "ログインしてください。"
+        redirect_to new_user_session_url 
+      end
     end
 end

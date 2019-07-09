@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :sign_in_required, only: [:show]
+  before_action :sign_in_required, only: [:show,:update,:subscribe,:unsubscribe]
+  
   def show
     @user  = User.find(params[:id])
     @page_id = params[:id]
@@ -43,7 +44,10 @@ class UsersController < ApplicationController
   
   private
     def sign_in_required
-      redirect_to new_user_session_url unless user_signed_in?
+      unless user_signed_in?
+        flash[:notice] = "ログインしてください。"
+        redirect_to new_user_session_url 
+      end
     end
   
     def only_edit_user_profile
