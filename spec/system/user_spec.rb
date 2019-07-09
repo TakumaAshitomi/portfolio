@@ -67,4 +67,14 @@ RSpec.feature "User", type: :system do
     click_button  "ログイン"
     expect(page).to have_content "ログインしました。"
   end
+  
+  scenario "Edit profile at mypage" do
+    @user = create(:user)
+    @user.confirm
+    login_as(@user)
+    visit "/users/#{@user.id}"
+    fill_in "user_user_profile", with: "update profile"
+    click_on "更新する"
+    expect(page).to have_content "update profile"
+  end
 end

@@ -48,38 +48,30 @@
         </div>
         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
           <div class="container">
-            <% @activities.first(5).each do |activity| %>
-              <div class="row bg-light m-3 rounded shadow-lg">
-                <div class="col-sm-3"><%=  image_tag user_image(activity.owner), class:"avatar-sm" %></div>
-                <div class="col-4 col-sm-5 align-self-center h5"><%=  link_to activity.trackable.title, "/posts/#{activity.trackable.id}", class: "text-reset" %></div>
-                <div class="col-4 align-self-center"><%= link_to activity.owner.name, "/users/#{activity.owner.id}", class: "text-reset" %></div>
-              </div>
+            <% if not @activities.nil? %>
+              <% @activities.first(5).each do |activity| %>
+                <div class="row bg-light m-3 rounded shadow-lg">
+                  <div class="col-sm-3"><%=  image_tag user_image(activity.owner), class:"avatar-sm" %></div>
+                  <div class="col-4 col-sm-5 align-self-center h5"><%=  link_to activity.trackable.title, "/posts/#{activity.trackable.id}", class: "text-reset" %></div>
+                  <div class="col-4 align-self-center"><%= link_to activity.owner.name, "/users/#{activity.owner.id}", class: "text-reset" %></div>
+                </div>
+              <% end %>
             <% end %>
           </div> 
         </div>        
         <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
           <div class="container">
-            <% @myposts.each do |post| %>
-              <div class="row bg-light m-3 rounded shadow-lg">
-                <div class="col-sm-3"><%=  image_tag user_image(post.user), class:"avatar-sm" %></div>
-                <div class="col-4 col-sm-5 align-self-center h5"><%=  link_to post.title, "/posts/#{post.id}", class: "text-reset" %></div>
-                <div class="col-4 align-self-center"><%= link_to "編集", "/posts/#{post.id}/edit", class: "text-reset" %></div>
-              </div>
+            <% if not @myposts.nil? %>
+              <% @myposts.each do |post| %>
+                <div class="row bg-light m-3 rounded shadow-lg">
+                  <div class="col-sm-3"><%=  image_tag user_image(post.user), class:"avatar-sm" %></div>
+                  <div class="col-4 col-sm-5 align-self-center h5"><%=  link_to post.title, "/posts/#{post.id}", class: "text-reset" %></div>
+                  <div class="col-4 align-self-center"><%= link_to "編集", "/posts/#{post.id}/edit", class: "text-reset" %></div>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div> 
       </div>
     </div>
 </div>
-
-<script>
-  javascript
-  $('.delete_button').bind("ajax:complete", function(xhr, response, status){
-    result = JSON.parse(response.responseText)[0]
-    if(status=="success"){
-      alert('成功したよ！' + result["id"]) + "番のデータが消えたよ！！")
-    }else{
-      alert("エラーが起きたので削除できませんでした")
-    }
-  })
-</script>
