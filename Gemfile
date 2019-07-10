@@ -26,6 +26,7 @@ gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'mini_magick'
 gem 'public_activity'
 gem 'faker'
+gem 'ransack'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
