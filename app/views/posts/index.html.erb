@@ -1,9 +1,11 @@
 <div class="container-fluid" >
     <div class="row" >
+      <div class="col-12 my-2 align-self-center">
       <%= search_form_for @query, url: posts_path do |f| %>
-      <div class = "col-12 text-center m-2">
-        <%= f.text_field :title_cont ,placeholder: "検索するテキストを入力...", class:"form-control" %>
-        <%= f.submit %>
+        <div class="text-center">
+        <%= f.text_field :title_cont, placeholder: "タイトルで検索", class:"form-control",style: " width: 80%; display: inline-block;" %>
+        <%= f.submit class: "btn btn-primary" %>
+        </div>
       <% end %>
       </div>
     <% @posts.each do |post| %>
