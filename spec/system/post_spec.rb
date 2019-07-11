@@ -48,4 +48,20 @@ RSpec.feature "Post", type: :system do
     click_on "Activity"
     expect(page).to have_content "#{@post.title}"
   end
+  
+  scenario "can search with ransack form" do
+    @user = create(:user)
+    @user.confirm
+    @post = create(:post)
+    @post2 = create(:post)
+    @post2.title = "none"
+    @post2.save
+    login_as (@user)
+    visit posts_path
+    expect(page).to have_content @post2.title
+    fill_in "q_title_cont", with: @post.title
+    click_on "検索"
+    expect(page).to have_content @post.title
+    expect(page).to_not have_content @post2.title
+  end
 end
