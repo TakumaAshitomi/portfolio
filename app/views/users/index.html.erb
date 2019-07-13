@@ -1,23 +1,32 @@
 <div class="container-fluid" >
     <div class="row" >
+      <div class="col-12 my-2 align-self-center">
+      <%= search_form_for @query, url: users_path do |f| %>
+        <div class="text-center">
+        <%= f.text_field :name_cont, placeholder: "ユーザー名で検索", class:"form-control",style: " width: 80%; display: inline-block;" %>
+        <%= f.submit class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      </div>
     <% @users.each do |user| %>
-      <div class="col-lg-3 col-12 col-sm-6">
+      <div class="col-12 col-md-6 col-lg-3">
         <div class="card bg-card m-2">
-          <div class="card-img-top circle-avatar text-center"><%= image_tag user_image(user) %></div>
-          <div class="card-body">
-            <h5 class="card-title text-center text-dark"><%= link_to user.name, "/users/#{user.id}", class: "text-dark h2" %></h5>
-            <p class="card-text">ここにコーチングの内容を軽く説明する文章</p>
+          <div class="card-img-top">
+            <div class="row">
+              <div class="col-4 ml-4 circle-avatar-sm"><%= image_tag user_image(user),class:"mt-2 ml-2" %></div>
+              <div class="col card-name text-truncate font-weight-bold d-inline-flex"><%= link_to user.name, "/users/#{user.id}", class: "text-dark h3 text-truncate" %></div>
+            </div>
           </div>
-          <ul class="list-group list-group-flush bg-card">
-            <li class="list-group-item bg-card">値段</li>
-            <li class="list-group-item bg-card">期間</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">詳細ページ</a>
-          </div>
+          <!--<div class="card-body">-->
+          <!--  <h5 class="card-title text-center text-dark"><%= link_to user.name, "", class: "text-dark h3" %></h5>-->
+          <!--  <div class="card-text bg-light text-truncate" style="height: 100px"><%== user.user_profile %></div>-->
+          <!--</div>-->
+          <!--<div class="card-body">-->
+          <!--  <a class="card-link"><%= link_to "詳細ページ", "/users/#{user.id}" %> </a>-->
+          <!--</div>-->
         </div>
       </div>
-      <% end %>
+    <% end %>
     </div>
     <div class="container">
     <div class="mb-5 text-center">

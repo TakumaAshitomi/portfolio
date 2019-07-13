@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.page(params[:page]).per(4)
+    @query = User.ransack(params[:q])
+    @users = @query.result.page(params[:page]).per(16)
   end
   
   def update
