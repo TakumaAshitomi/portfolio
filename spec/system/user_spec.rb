@@ -84,4 +84,21 @@ RSpec.feature "User", type: :system do
     visit edit_user_registration_path
     expect(page).to have_content "ログインまたは登録が必要です。"
   end
+  
+  scenario "Can search with ransack form" do
+    @user = create(:user)
+    @user.confirm
+    @user2 = create(:user)
+    @user2.name = "aaaa"
+    @user2.save
+    @user2.confirm
+    login_as (@user)
+    visit users_path
+    expect(page).to have_content @user.name
+    fill_in "q_name_cont", with: @user.name
+    click_on "検索"
+    expect(page).to have_content @user.name
+    expect(page).to_not have_content @user2.name
+  end
+  
 end

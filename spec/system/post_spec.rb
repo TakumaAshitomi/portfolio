@@ -11,7 +11,7 @@ RSpec.feature "Post", type: :system do
     expect(page).to have_content "作成しました。"
   end
   
-  scenario "can edit by owner" do
+  scenario "Can edit by owner" do
     @user = create(:user)
     @user.confirm
     login_as(@user)
@@ -24,7 +24,7 @@ RSpec.feature "Post", type: :system do
     expect(page).to have_content "変更しました。"
   end
   
-  scenario "can delete by owner", js: true do
+  scenario "Can delete by owner", js: true do
     @user = create(:user)
     @user.confirm
     login_as(@user)
@@ -36,7 +36,7 @@ RSpec.feature "Post", type: :system do
     expect(page).to have_content "削除しました"
   end
   
-  scenario "can see by followed user", js: true do 
+  scenario "Can see by followed user", js: true do 
     @user = create(:user)
     @user.confirm
     @user2 = create(:user)
@@ -49,7 +49,7 @@ RSpec.feature "Post", type: :system do
     expect(page).to have_content "#{@post.title}"
   end
   
-  scenario "can search with ransack form" do
+  scenario "Can search with ransack form" do
     @user = create(:user)
     @user.confirm
     @post = create(:post)
