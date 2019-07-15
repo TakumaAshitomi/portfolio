@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  #before_action :sign_in_required, only: [:new,:create,:edit,:update,:destoroy]
+  before_action :sign_in_required, only: [:new,:create,:edit,:update,:destoroy]
   
   def show
     @post = Post.find(params[:id])

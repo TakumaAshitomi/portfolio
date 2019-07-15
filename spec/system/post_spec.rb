@@ -49,13 +49,19 @@ RSpec.feature "Post", type: :system do
     expect(page).to have_content "#{@post.title}"
   end
   
+  scenario "Not logged in user can't open pages required login" do
+    visit "/posts/new"
+    expect(page).to have_content "ログインしてください。"
+    visit "/posts/1/edit"
+    expect(page).to have_content "ログインしてください。"
+  end
+  
   scenario "Can search with ransack form" do
     @user = create(:user)
     @user.confirm
     @post = create(:post)
     @post2 = create(:post)
-    @post2.title = "none"
-    @post2.save
+    @post2.update_attributes(title: "none")
     login_as (@user)
     visit posts_path
     expect(page).to have_content @post2.title

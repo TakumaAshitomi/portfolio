@@ -3,9 +3,7 @@ require "rails_helper"
 RSpec.feature "User", type: :system do
   
   scenario "Create a new user" do
-      #Access signup page
       visit new_user_registration_path
-      #fill in  name,email, password, password_confirmation
       fill_in   "user_name",                    with: "testuser"
       fill_in   "user_email",                   with: "example@tutorial.com"
       fill_in   "user_password",                with: "password"
@@ -78,11 +76,12 @@ RSpec.feature "User", type: :system do
     expect(page).to have_content "update profile"
   end
   
-  scenario "Not login user can't open page for login users" do
+  scenario "Not logged in user can't open pages required login" do
     visit "/users/1"
-    expect(page).to have_content "ログインしてください。"
     visit edit_user_registration_path
     expect(page).to have_content "ログインまたは登録が必要です。"
+    visit "/users"
+    expect(page).to have_content "ログインしてください。"
   end
   
   scenario "Can search with ransack form" do

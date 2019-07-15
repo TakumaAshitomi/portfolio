@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :sign_in_required, only: [:show,:update,:subscribe,:unsubscribe]
+  before_action :sign_in_required, only: [:show,:update,:subscribe,:unsubscribe,:index]
   
   def show
     @user  = User.find(params[:id])
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if current_user_path?(@user.id)
-      @user.update_attributes(only_edit_user_profile)
+      @user.update_attributes(user_profile)
       render "show"
     else
       render "show"
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
       end
     end
   
-    def only_edit_user_profile
+    def user_profile
       params.require(:user).permit(:user_profile)
     end
     
