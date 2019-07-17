@@ -1,7 +1,7 @@
 <div class="container-fluid" >
     <div class="row" >
       <div class="col-12 my-2 align-self-center">
-      <%= search_form_for @query, url: users_path do |f| %>
+      <%= search_form_for @userquery, url: "/manage" do |f| %>
         <div class="text-center">
         <%= f.text_field :name_cont, placeholder: "ユーザー名で検索", class:"form-control",style: " width: 80%; display: inline-block;" %>
         <%= f.submit class: "btn btn-primary" %>

@@ -13,4 +13,5 @@ Rails.application.routes.draw do
  post "posts/:id" => "posts#update"
  delete "/posts/:id" => "posts#destroy"
  get  "posts/:id" => "posts#show"
+ get  "managepage" => "management#manage"
 end
