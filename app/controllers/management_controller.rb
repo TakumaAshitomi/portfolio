@@ -10,8 +10,10 @@ class ManagementController < ApplicationController
 
   private
     def admin_user_only
-      redirect_to root_url unless current_user.admin?
-      flash[:notice] = "管理ユーザー専用ページです。"
+      unless current_user.admin?
+        redirect_to root_url 
+        flash[:notice] = "管理ユーザー専用ページです。"
+      end
     end
 end
 

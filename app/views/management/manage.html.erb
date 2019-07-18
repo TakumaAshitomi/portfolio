@@ -1,25 +1,26 @@
 <div class="container-fluid" >
-    <div class="row" >
-      <div class="col-12 my-2 align-self-center">
+  <div class="row" >
+    <div class="col-12 my-2 align-self-center">
       <%= search_form_for @userquery, url: "/manage" do |f| %>
         <div class="text-center">
         <%= f.text_field :name_cont, placeholder: "ユーザー名で検索", class:"form-control",style: " width: 80%; display: inline-block;" %>
         <%= f.submit class: "btn btn-primary" %>
         </div>
       <% end %>
-      </div>
+    </div>
+
+      <table border="1">
+        <tr>
+          <th>名前</th>
+          <th>操作</th>
+        </tr>
     <% @users.each do |user| %>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card bg-card m-2">
-          <div class="card-img-top">
-            <div class="row">
-              <div class="col-4 ml-4 circle-avatar-sm"><%= image_tag user_image(user),class:"mt-2 ml-2" %></div>
-              <div class="col card-name text-truncate font-weight-bold d-inline-flex"><%= link_to user.name, "/users/#{user.id}", class: "text-dark h3 text-truncate" %></div>
-            </div>
-          </div>
-        </div>
-      </div>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= link_to "削除", "#" %></td>
+          </tr>
     <% end %>
+    </table>
     </div>
     <div class="container">
     <div class="mb-5 text-center">
