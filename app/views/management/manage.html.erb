@@ -1,30 +1,57 @@
 <div class="container-fluid" >
   <div class="row" >
     <div class="col-12 my-2 align-self-center">
-      <%= search_form_for @userquery, url: "/manage" do |f| %>
+      <%= search_form_for @userquery, url: "/managepage" do |f| %>
         <div class="text-center">
         <%= f.text_field :name_cont, placeholder: "ユーザー名で検索", class:"form-control",style: " width: 80%; display: inline-block;" %>
         <%= f.submit class: "btn btn-primary" %>
         </div>
       <% end %>
     </div>
-
-      <table border="1">
+    <table border="1" width="100%">
+      <tr>
+        <th>名前</th>
+        <th>操作</th>
+      </tr>
+      <% @users.each do |user| %>
         <tr>
-          <th>名前</th>
-          <th>操作</th>
+          <td><%= user.name %></td>
+          <td><%= link_to "削除", "#" %></td>
         </tr>
-    <% @users.each do |user| %>
-          <tr>
-            <td><%= user.name %></td>
-            <td><%= link_to "削除", "#" %></td>
-          </tr>
-    <% end %>
+      <% end %>
     </table>
-    </div>
     <div class="container">
     <div class="mb-5 text-center">
         <%= paginate @users %>
     </div>
     </div>
+    <div class="col-12 my-2 align-self-center">
+      <%= search_form_for @postquery, url: "/managepage" do |f| %>
+        <div class="text-center">
+        <%= f.text_field :title_cont, placeholder: "タイトル名で検索", class:"form-control",style: " width: 80%; display: inline-block;" %>
+        <%= f.submit class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+    <table border="1" width="100%">
+      <tr>
+        <th>名前</th>
+        <th>ユーザー</th>
+        <th>操作</th>
+      </tr>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.user.name %></td>
+          <td><%= link_to "削除", "#" %></td>
+        </tr>
+      <% end %>
+    </table>
+    </div>
+    <div class="container">
+    <div class="mb-5 text-center">
+        <%= paginate @posts %>
+    </div>
+    </div>
+</div>
 </div>

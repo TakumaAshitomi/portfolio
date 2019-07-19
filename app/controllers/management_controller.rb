@@ -3,9 +3,9 @@ class ManagementController < ApplicationController
   
   def manage
     @userquery = User.ransack(params[:q])
-    @users = @userquery.result.page(params[:page]).per(16)
+    @users = @userquery.result.page(params[:page]).per(8)
     @postquery = Post.ransack(params[:q])
-    @posts = @postquery.result.page(params[:page]).per(16)
+    @posts = @postquery.result.page(params[:page]).per(8)
   end
 
   private
