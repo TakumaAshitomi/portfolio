@@ -11,7 +11,7 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      can :manage, Post, owner: user
+      can :manage, Post, user_id: user.id
     end
   end
 end

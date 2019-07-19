@@ -39,9 +39,18 @@ class PostsController < ApplicationController
   
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:notice] = "削除しました"
-    redirect_to "/users/#{current_user.id}"
+    if can? :destroy, @post
+      if @post.destroy
+        flash[:notice] = "削除しました"
+        redirect_to "/users/#{current_user.id}"
+      else
+        flash[:notice] = "削除に失敗しました"
+        redirect_back(fallback_location: root_path)
+      end
+    else
+      flash[:notice] = "権限がありません。"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private

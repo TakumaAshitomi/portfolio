@@ -43,7 +43,7 @@
         <tr>
           <td><%= post.title %></td>
           <td><%= post.user.name %></td>
-          <td><%= link_to "削除", "#" %></td>
+          <td><%= link_to '削除', "/posts/#{post.id}", method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger ml-4" %></td>
         </tr>
       <% end %>
     </table>
