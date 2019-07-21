@@ -15,8 +15,7 @@ RSpec.feature "Post", type: :system do
     @user = create(:user)
     @user.confirm
     login_as(@user)
-    @post = create(:post)
-    @post.user_id = @user.id
+    @post = create(:post, user_id: @user.id)
     visit "/posts/#{@post.id}/edit"
     fill_in "title", with: "testtitle2"
     fill_in "editor", with: "testdescription2"

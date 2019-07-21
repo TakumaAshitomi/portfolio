@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :sign_in_required, only: [:show,:update,:subscribe,:unsubscribe,:index]
+  before_action :sign_in_required, only: [:show,:update,:subscribe,:unsubscribe,:index,:destroy]
   
   def show
     @user  = User.find(params[:id])
@@ -24,6 +24,17 @@ class UsersController < ApplicationController
       end
     else 
       flash[:notice] = "権限がありません"
+    end
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    if can? :destroy, @user
+      @user.destroy
+      flash[:notice] = "削除しました。"
+      redirect_back(fallback_location: root_path)
+    else
+    flash[:notice] = "権限がありません"
     end
   end
   

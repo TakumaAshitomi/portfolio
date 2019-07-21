@@ -16,7 +16,7 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= user.name %></td>
-          <td><%= link_to "削除", "#" %></td>
+          <td><%= link_to '削除', "/users/#{user.id}", method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger ml-4" %></td>
         </tr>
       <% end %>
     </table>
