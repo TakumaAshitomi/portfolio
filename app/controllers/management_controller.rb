@@ -13,13 +13,6 @@ class ManagementController < ApplicationController
     end
   end
 
-  # private
-  #   def admin_user_only
-  #     unless can? :read, current_user
-  #       redirect_to root_url 
-  #       flash[:notice] = "管理ユーザー専用ページです。"
-  #     end
-  #   end
 end
 
 
