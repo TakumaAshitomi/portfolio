@@ -1,5 +1,5 @@
 class ManagementController < ApplicationController
-  #before_action :admin_user_only
+  before_action :admin_user_only
   
   def manage
     @userquery = User.ransack(params[:q])

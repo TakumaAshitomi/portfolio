@@ -31,10 +31,18 @@ class PostsController < ApplicationController
   
   def update
     @post = Post.find(params[:id])
-    @post.update_attributes(post_params)
-    @post.save
-    flash[:notice] = "変更しました。"
-    redirect_to "/posts/#{@post.id}"
+    if can? :update, @post
+      @post.update_attributes(post_params)
+      if @post.save
+      flash[:notice] = "変更しました。"
+      redirect_to "/posts/#{@post.id}"
+      else
+      flash[:notice] = "変更に失敗しました"
+      render "edit"
+      end
+    else
+      flash[:notice] = "権限がありません"
+    end
   end
   
   def destroy

@@ -12,6 +12,7 @@ class Ability
     else
       can :read, :all
       can :manage, Post, user_id: user.id
+      can :manage, User, id: user.id
     end
   end
 end
