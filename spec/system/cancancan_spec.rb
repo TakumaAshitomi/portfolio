@@ -13,5 +13,5 @@ RSpec.feature "Cancancan", type: :system do
     visit "/managepage"
     expect(page).to have_content "管理ユーザー専用ページです"
   end
-  
+
 end

@@ -1,6 +1,5 @@
 class ManagementController < ApplicationController
-  # before_action :admin_user_only
-  
+
   def manage
     if can? :read, "/managepage", current_user
     @userquery = User.ransack(params[:q])
