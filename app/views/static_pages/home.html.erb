@@ -1,11 +1,14 @@
   <div class="jumbotron jumbotron-fluid min-vh-100">
     <div class="container">
       <div class="logo text-center mb-5"><%= image_tag("logo.png") %></div>
-      <h1 class="display-4 text-center text-light">ようこそ！</h1>
-      <p class="lead text-center m-5 text-light">Coachingは、あなたの活動をサポートします。</p>
+      <h1 class="display-4 text-center head-text-color">ようこそ！</h1>
+      <p class="lead text-center m-5 sub-text-color">Coachingは、あなたの活動をサポートします。</p>
       <div class="text-center">
         <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-light btn-lg center-block m-2"%>
-        <%= link_to "検索してみよう！", posts_path, class: "btn btn-outline-light btn-lg center-block"%>
+        <%= search_form_for @query, url: posts_path do |f| %>
+        <%= f.text_field :title_cont, placeholder: "おいしいカレーの作り方", class: "form-control mt-2 sub-color" %>
+        <%= f.submit "検索してみよう！", class: "btn btn-outline-light btn-lg mt-3" %>
+      <% end %>
       </div>
     </div>
   </div>

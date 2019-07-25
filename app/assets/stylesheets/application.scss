@@ -1,9 +1,22 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+$base_color: #77A1B4;
+$sub_color: #4B8CA7;
+$text_color: #116D95;
+$head_color: #0F8A8A;
+
 .pagination {
   text-align: center;
   display: inline-flex;
+}
+
+.sub-text-color {
+  color: $text_color;
+}
+
+.head-text-color {
+  color: $head_color;
 }
 
 .body{
@@ -11,10 +24,23 @@
 }
 
 .jumbotron{
-  background-image: image-url("chalkboard-green-pattern-01.jpg");
+  // background-image: image-url("chalkboard-green-pattern-01.jpg");
   background-size: cover;
   background-position: center 60%;
-  color: FFF;
+  background-color: $base_color;
+}
+
+.navbar-toggler{
+  border-color: rgba(0,0,0,0);
+  .navbar-toggler-icon{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30'
+  xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(51, 51, 51, 1)'
+  stroke-width='3' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+}
+
+.nav-color{
+  background-color: $sub_color;
 }
 
 .circle-avatar img {
