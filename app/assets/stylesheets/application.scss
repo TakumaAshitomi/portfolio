@@ -19,18 +19,27 @@ $head_color: #0F8A8A;
   color: $head_color;
 }
 
-.body{
+.body {
   padding-top: 54px;
 }
 
-.jumbotron{
+.logo-size img {
+  max-width: auto;
+  max-height: 50px;
+}
+
+.navbar {
+  // display: inline-block;
+}
+
+.jumbotron {
   // background-image: image-url("chalkboard-green-pattern-01.jpg");
   background-size: cover;
   background-position: center 60%;
   background-color: $base_color;
 }
 
-.navbar-toggler{
+.navbar-toggler {
   border-color: rgba(0,0,0,0);
   .navbar-toggler-icon{
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30'
