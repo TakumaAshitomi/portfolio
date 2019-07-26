@@ -7,7 +7,8 @@ RSpec.feature "Subscription", type: :system do
     visit posts_new_path
     fill_in "title", with: "testtitle"
     fill_in_ckeditor "editor", with: 'Some text'
-    click_button "登録する"
+    execute_script('window.scrollBy(0,500)') # スクロールさせる
+    click_on "登録する"
     expect(page).to have_content "作成しました。"
     logout(user)
     user2 = create(:user)
