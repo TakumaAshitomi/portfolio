@@ -28,6 +28,11 @@ $head_color: #0F8A8A;
   max-height: 50px;
 }
 
+.logo{
+  width: 300px;
+  height: auto;
+}
+
 .navbar {
   // display: inline-block;
 }
@@ -50,6 +55,12 @@ $head_color: #0F8A8A;
 
 .nav-color{
   background-color: $sub_color;
+}
+
+.screenshot {
+  width:100%;
+  max-width: 100%;
+  height: auto;
 }
 
 .circle-avatar img {
@@ -75,11 +86,13 @@ $head_color: #0F8A8A;
 }
 
 .bg {
-  background-image: image-url("03-light-carpet.png");
+  background-color: $base_color;
+  // background-image: image-url("03-light-carpet.png");
 }
 
 .bg-card {
-  background-image: image-url("04-polish-wood.png");
+  background-color: #CBE6F3;
+  // background-image: image-url("04-polish-wood.png");
 }
 
 .bg-info { 
