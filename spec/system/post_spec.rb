@@ -24,9 +24,14 @@ RSpec.feature "Post", type: :system do
   scenario "Can delete by owner", js: true do
     user = create(:user)
     login(user)
-    post = create(:post)
-    post.user_id = user.id
-    visit "/posts/#{post.id}/edit"
+    visit posts_new_path
+    fill_in "title", with: "testtitle"
+    fill_in_ckeditor "editor", with: 'Some text'
+    execute_script('window.scrollBy(0,500)')
+    click_on "登録する"
+    visit "/users/#{user.id}/"
+    click_on "投稿管理"
+    click_on "編集"
     click_on "削除"
     page.driver.browser.switch_to.alert.accept
     expect(page).to have_content "削除しました"
@@ -53,8 +58,8 @@ RSpec.feature "Post", type: :system do
   
   scenario "Can search with ransack form" do
     user = create(:user)
-    post = create(:post)
-    post2 = create(:post, title: "none")
+    post = create(:post, user_id: user.id)
+    post2 = create(:post, title: "none", user_id: user.id)
     login(user)
     visit posts_path
     expect(page).to have_content post2.title

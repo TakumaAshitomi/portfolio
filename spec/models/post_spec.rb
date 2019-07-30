@@ -3,11 +3,12 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   
   before do
-    @post = create(:post)
+    @post = build(:post)
   end
 
   it "has a valid factory" do
-    expect(build(:post)).to be_valid
+    create(:user, id: @post.user_id)
+    expect(@post).to be_valid
   end
   
   it "is invalid without a title" do
@@ -37,11 +38,15 @@ RSpec.describe Post, type: :model do
   context "when there are two posts" do
     
     before do 
-      @post2 = create(:post)
+      @post2 = build(:post)
     end
       
     it "allows same user create two posts with different title" do
+      create(:user, id: @post2.user_id)
       @post2.user_id = @post.user_id
+      @post.save
+      @post2.title = "different title"
+      @post2.save
       expect(@post2).to be_valid
     end
     

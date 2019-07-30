@@ -27,12 +27,12 @@ gem 'mini_magick'
 gem 'public_activity'
 gem 'faker'
 gem 'ransack'
+gem 'pg', '1.1.4'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara'
   gem 'webdrivers'
-  gem 'sqlite3',      '1.3.13'
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
@@ -46,7 +46,6 @@ group :development do
 end
 
 group :production do 
-  gem 'pg', '1.1.4'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

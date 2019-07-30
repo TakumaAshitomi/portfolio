@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Subscription, type: :model do
   
   before do
-    @subs = create(:subscription)
+    user = create(:user)
+    @subs = build(:subscription, user_id: user.id)
   end
   
   it "is invalid without a user_id" do
@@ -23,12 +24,13 @@ RSpec.describe Subscription, type: :model do
   context "user has two subs" do
     
     before do 
-      @subs2 = create(:subscription)
+      @subs2 = build(:subscription, user_id: @subs.user_id)
     end
     
     it "disallow same subs" do
       @subs2.followed_id = @subs.followed_id
       @subs.save
+      @subs2.save
       expect(@subs2).to_not be_valid
     end 
     
