@@ -14,12 +14,12 @@
           <div class="card-img-top">
             <div class="row">
               <div class="col-4 ml-4 circle-avatar-sm"><%= image_tag user_image(post.user),class:"mt-2 ml-2" %></div>
-              <div class="col card-name text-truncate font-weight-bold d-inline-flex"><%= link_to post.user.name, "/users/#{post.user_id}", class: "text-dark h3 text-truncate" %></div>
+              <div class="col text-truncate font-weight-bold float-left my-auto pl-2"><%= link_to post.user.name, "/users/#{post.user_id}", class: "text-dark h3 text-truncate" %></div>
             </div>
           </div>
           <div class="card-body">
             <h5 class="card-title text-center text-dark"><%= link_to post.title, "/posts/#{post.id}", class: "text-dark h3" %></h5>
-            <div class="card-text bg-light text-truncate" style="height: 100px"><%== post.description %></div>
+            <div class="card-text bg-light text-truncate" style="height: 100px;"><%== post.description %></div>
           </div>
           <div class="card-body">
             <a class="card-link"><%= link_to "詳細ページ", "/posts/#{post.id}" %> </a>

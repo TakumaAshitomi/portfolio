@@ -2,21 +2,21 @@
   <div class="row" style="padding:auto">
     <div class="col-sm-2 p-0">
       <% if current_user_path?(params[:id]) %>
-      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="nav-item nav-link active badge-secondary text-light" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-        <a class="nav-link badge-secondary" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Activity</a>
-        <%= link_to "新規投稿", "/posts/new", class: "nav-link badge-secondary" %>
-        <a class="nav-link badge-secondary" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">投稿管理</a>
-      </div>
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-item nav-link active badge-secondary text-light" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+          <a class="nav-link badge-secondary" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Activity</a>
+          <%= link_to "新規投稿", "/posts/new", class: "nav-link badge-secondary" %>
+          <a class="nav-link badge-secondary" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">投稿管理</a>
+        </div>
       <% else %>
-      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="nav-item nav-link active badge-secondary text-light" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-        <% if already_subscribed?(params[:id]) %>
-        <%= link_to "購読", "/users/#{params[:id]}/subs", id: "subs", class: "nav-link badge-secondary", method: :post, remote: true %>
-        <% else %>
-        <%= link_to "購読を解除", "/users/#{params[:id]}/subs", id: "unsubs", class: "nav-link badge-secondary", method: :delete, remote: true %>
-        <% end %>
-      </div>
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-item nav-link active badge-secondary text-light" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+          <% if already_subscribed?(params[:id]) %>
+            <%= link_to "購読", "/users/#{params[:id]}/subs", id: "subs", class: "nav-link badge-secondary", method: :post, remote: true %>
+          <% else %>
+            <%= link_to "購読を解除", "/users/#{params[:id]}/subs", id: "unsubs", class: "nav-link badge-secondary", method: :delete, remote: true %>
+          <% end %>
+        </div>
       <% end %>
     </div>
     <div class="col-sm-10 bg-card min-vh-100">
