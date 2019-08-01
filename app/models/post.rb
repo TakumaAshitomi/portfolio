@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
 include PublicActivity::Common
+acts_as_taggable
 
     belongs_to :user
     

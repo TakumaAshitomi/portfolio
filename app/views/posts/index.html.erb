@@ -22,7 +22,7 @@
             <div class="card-text bg-light text-truncate" style="height: 100px;"><%== post.description %></div>
           </div>
           <div class="card-body">
-            <a class="card-link"><%= link_to "詳細ページ", "/posts/#{post.id}" %> </a>
+            <a class="card-link"><%= render "posts/tag_list", tag_list: post.tag_list %> </a>
           </div>
         </div>
       </div>
