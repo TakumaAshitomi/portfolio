@@ -5,9 +5,13 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
   
-  def index 
+  def index
     @query = Post.ransack(params[:q])
-    @posts = @query.result.page(params[:page]).per(8)
+    if params[:tag_name]
+      @posts = Post.all.tagged_with("#{params[:tag_name]}").page(params[:page]).per(8)
+    else
+      @posts = @query.result.page(params[:page]).per(8)
+    end
   end
   
   def new 

@@ -28,6 +28,7 @@ gem 'public_activity'
 gem 'faker'
 gem 'ransack'
 gem 'pg', '1.1.4'
+gem 'acts-as-taggable-on', '~> 6.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -36,7 +37,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
-  gem 'acts-as-taggable-on', '~> 6.0'
+
 end
 
 group :development do
