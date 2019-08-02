@@ -17,7 +17,7 @@
     </div>
     
     <div class="form-group m-4">
-      <%= f.label :tag_list %>
+      <%= f.label "複数のタグは , で区切って入力してください" %>
       <%= f.text_field :tag_list, id: "taglist", value: @post.tag_list.join(','), class: "form-control", placeholder: "タグ1,タグ2,タグ3...." %>
     </div>
   
