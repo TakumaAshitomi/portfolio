@@ -1,6 +1,6 @@
 require "rails_helper"
 RSpec.feature "Post", type: :system do
-  scenario "User creates a new post" do
+  scenario "User creates a new post without tag" do
     user = create(:user)
     login(user)
     visit posts_new_path
@@ -68,4 +68,27 @@ RSpec.feature "Post", type: :system do
     expect(page).to have_content post.title
     expect(page).to_not have_content post2.title
   end
+  
+  scenario "Can create with tag" do
+    user = create(:user)
+    login(user)
+    visit posts_new_path
+    fill_in "title", with: "testtitle"
+    fill_in "editor", with: "testdescription"
+    fill_in "taglist", with: "tag1,tag2"
+    click_button "登録する"
+    expect(page).to have_content "作成しました。"
+  end
+  
+  scenario "Search posts with taglist" do
+    user = create(:user, id:1)
+    login(user)
+    create(:post, tag_list: "tagA")
+    create(:post, tag_list: "tagB" )
+    visit posts_path
+    click_on "tagA"
+    expect(page).to have_content "tagA"
+    expect(page).to_not have_content "tagB"
+  end
+  
 end
