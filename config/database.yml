@@ -3,9 +3,9 @@ default: &default
   encode: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: <%= ENV['PG_USERNAME'] %>
-  password: <%= ENV['PG_PASSWORD'] %>
-  host:     <%= ENV['IP'] %>
+  username: root #<%= ENV['PG_USERNAME'] %>
+  password: password #<%= ENV['PG_PASSWORD'] %>
+  host:     db #<%= ENV['IP'] %>
   template: template0
 
 development:
@@ -21,4 +21,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
+  username: <%= ENV['PG_USERNAME'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
   

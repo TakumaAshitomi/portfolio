@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: postgres:11
+    container_name: db-container 
+    ports: 
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=root 
+      - POSTGRES_PASSWORD=password
+      - PGPASSWORD=password
+      - POSTGRES_DB=myapp_development
+      - DATABASE_HOST=localhost
+    volumes:
+      - .:/app_name/db
+
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/app_name
+    ports:
+      - "3000:3000"
+    links:
+      - db
