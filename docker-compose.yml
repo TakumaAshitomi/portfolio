@@ -12,7 +12,8 @@ services:
       - POSTGRES_DB=myapp_development
       - DATABASE_HOST=localhost
     volumes:
-      - $PWD/docker/db/init:/docker-entrypoint-initdb.d
+      - dbdata:/var/lib/postgresql/data
+    restart: always
   web:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
@@ -29,3 +30,5 @@ services:
     image: selenium/standalone-chrome:3.141.59-dubnium
     ports:
       - 4444:4444
+volumes:
+  dbdata:
