@@ -1,4 +1,6 @@
-Capybara.server_host = Socket.ip_address_list.detect{|addr| addr.ipv4_private?}.ip_address
+# frozen_string_literal: true
+
+Capybara.server_host = Socket.ip_address_list.detect(&:ipv4_private?).ip_address
 Capybara.server_port = 3000
 
 Capybara.register_driver :selenium_remote do |app|

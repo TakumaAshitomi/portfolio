@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.feature "Subscription", type: :system do
@@ -6,8 +8,8 @@ RSpec.feature "Subscription", type: :system do
     login(user)
     visit posts_new_path
     fill_in "title", with: "testtitle"
-    fill_in_ckeditor "editor", with: 'Some text'
-    execute_script('window.scrollBy(0,1000)')
+    fill_in_ckeditor "editor", with: "Some text"
+    execute_script("window.scrollBy(0,1000)")
     click_on "登録する"
     expect(page).to have_content "作成しました。"
     logout(user)

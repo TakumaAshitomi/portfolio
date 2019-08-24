@@ -1,15 +1,16 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.feature "User", type: :system do
-  
   scenario "Create a new user" do
-      visit new_user_registration_path
-      fill_in   "user_name",                    with: "testuser"
-      fill_in   "user_email",                   with: "example@tutorial.com"
-      fill_in   "user_password",                with: "password"
-      fill_in   "user_password_confirmation",   with: "password"
-      click_on  "新規登録"
-      expect(page).to have_content "確認メールを登録したメールアドレス宛に送信しました。リンクを開いてアカウントを有効にして下さい。"
+    visit new_user_registration_path
+    fill_in   "user_name",                    with: "testuser"
+    fill_in   "user_email",                   with: "example@tutorial.com"
+    fill_in   "user_password",                with: "password"
+    fill_in   "user_password_confirmation",   with: "password"
+    click_on  "新規登録"
+    expect(page).to have_content "確認メールを登録したメールアドレス宛に送信しました。"
   end
 
   scenario "Login with valid email,password" do
@@ -21,7 +22,7 @@ RSpec.feature "User", type: :system do
     click_button "ログイン"
     expect(page).to have_content "ログインしました。"
   end
-    
+
   scenario "Failed login" do
     @user = create(:user)
     visit new_user_session_path
@@ -31,7 +32,7 @@ RSpec.feature "User", type: :system do
     click_button "ログイン"
     expect(page).to have_content "メールアドレスまたはパスワードが無効です。"
   end
-  
+
   scenario "Edit fill_in all form" do
     @user = create(:user)
     @user.confirm
@@ -46,26 +47,26 @@ RSpec.feature "User", type: :system do
     visit new_user_session_path
     fill_in   "user_email",                   with: @user.email
     fill_in   "user_password",                with: "password_new"
-    click_button  "ログイン"
+    click_button "ログイン"
     expect(page).to have_content "ログインしました。"
   end
-  
+
   scenario "Edit fill in all form except new password" do
     @user = create(:user)
     @user.confirm
     login_as(@user)
     visit edit_user_registration_path
-    fill_in   "user_current_password",        with: @user.password
+    fill_in   "user_current_password", with: @user.password
     click_on  "更新"
     expect(page).to have_content "アカウントが更新されました。"
     logout
     visit new_user_session_path
     fill_in   "user_email",                   with: @user.email
     fill_in   "user_password",                with: "password"
-    click_button  "ログイン"
+    click_button "ログイン"
     expect(page).to have_content "ログインしました。"
   end
-  
+
   scenario "Edit profile at mypage" do
     @user = create(:user)
     @user.confirm
@@ -75,7 +76,7 @@ RSpec.feature "User", type: :system do
     click_on "更新する"
     expect(page).to have_content "update profile"
   end
-  
+
   scenario "Not logged in user can't open pages required login" do
     visit "/users/1"
     visit edit_user_registration_path
@@ -83,7 +84,7 @@ RSpec.feature "User", type: :system do
     visit "/users"
     expect(page).to have_content "ログインしてください。"
   end
-  
+
   scenario "Can search with ransack form" do
     @user = create(:user)
     @user.confirm
@@ -91,7 +92,7 @@ RSpec.feature "User", type: :system do
     @user2.name = "aaaa"
     @user2.save
     @user2.confirm
-    login_as (@user)
+    login_as @user
     visit users_path
     expect(page).to have_content @user.name
     fill_in "q_name_cont", with: @user.name
@@ -99,5 +100,4 @@ RSpec.feature "User", type: :system do
     expect(page).to have_content @user.name
     expect(page).to_not have_content @user2.name
   end
-  
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def user_image(user)
     if user.persisted? && user.avatar?

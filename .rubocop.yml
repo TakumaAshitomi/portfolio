@@ -7,8 +7,9 @@ AllCops:
     - "node_modules/**/*"
     - "db/migrate/*.rb"
     - "bin/*"
+    - "spec/rails_helper.rb"
   DisplayCopNames: true
-  TargetRubyVersion: 2.6.0
+  TargetRubyVersion: 2.5
 
 Rails:
   Enabled: true
@@ -33,3 +34,20 @@ Bundler/OrderedGems:
 
 Lint/ShadowedException:
   Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'config/environments/*'
+
+Lint/UselessAssignment:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/LineLength:
+  Exclude:
+    - 'spec/factories/*'
+    - 'config/application.rb'

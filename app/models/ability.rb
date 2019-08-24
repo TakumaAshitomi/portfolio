@@ -5,7 +5,7 @@ class Ability
 
   def initialize(user)
     can :manage, :session
-    
+
     user ||= User.new
     if user.admin?
       can :manage, :all

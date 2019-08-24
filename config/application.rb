@@ -1,29 +1,24 @@
-require_relative 'boot'
+# frozen_string_literal: true
 
-require 'rails/all'
+require_relative "boot"
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
+require "rails/all"
+
 Bundler.require(*Rails.groups)
 
 module Portfolio
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.i18n.default_locale = :ja
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
     Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
     config.assets.initialize_on_precompile = false
-    
+
     config.generators do |g|
       g.test_framework :rspec,
-      view_specs: false,
-      helper_specs: false,
-      routing_specs: false,
-      request_specs: false
+                       view_specs: false,
+                       helper_specs: false,
+                       routing_specs: false,
+                       request_specs: false
     end
-    
   end
 end
