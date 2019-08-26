@@ -10,7 +10,8 @@ class PostsController < ApplicationController
   def index
     @query = Post.ransack(params[:q])
     @posts = if params[:tag_name]
-               Post.all.tagged_with(params[:tag_name].to_s).page(params[:page]).per(8)
+               Post.all.tagged_with(params[:tag_name].to_s) \
+                   .page(params[:page]).per(8)
              else
                @query.result.page(params[:page]).per(8)
              end
@@ -21,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post.user_id = current_user.id if @post = Post.new(post_params)
+    @post.user_id = current_user.id if @post == Post.new(post_params)
     if @post.save
       @post.create_activity :create, owner: current_user
       flash[:notice] = "作成しました。"
@@ -47,7 +48,7 @@ class PostsController < ApplicationController
         render "edit"
       end
     else
-      flash[:notice] = "権限がありません"
+      no_authority
     end
   end
 
@@ -62,8 +63,7 @@ class PostsController < ApplicationController
         redirect_back(fallback_location: root_path)
       end
     else
-      flash[:notice] = "権限がありません。"
-      redirect_back(fallback_location: root_path)
+      no_authority
     end
   end
 
@@ -74,9 +74,14 @@ class PostsController < ApplicationController
   end
 
   def sign_in_required
-    unless user_signed_in?
-      flash[:notice] = "ログインしてください。"
-      redirect_to new_user_session_url
-    end
+    return if user_signed_in?
+
+    flash[:notice] = "ログインしてください。"
+    redirect_to new_user_session_url
+  end
+
+  def no_authority
+    flash[:notice] = "権限がありません。"
+    redirect_back(fallback_location: root_path)
   end
 end

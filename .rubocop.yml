@@ -9,7 +9,7 @@ AllCops:
     - "bin/*"
     - "spec/rails_helper.rb"
   DisplayCopNames: true
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.5.3
 
 Rails:
   Enabled: true
@@ -51,3 +51,15 @@ Metrics/LineLength:
   Exclude:
     - 'spec/factories/*'
     - 'config/application.rb'
+  Max: 170
+
+Metrics/MethodLength:
+  Max: 15
+
+Lint/RequireParentheses:
+  Exclude:
+    - 'app/controllers/users_controller.rb'
+
+Metrics/AbcSize:
+  Enabled: true
+  Max: 25
