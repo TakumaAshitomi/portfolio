@@ -37,7 +37,7 @@ jobs:
       - image: circleci/postgres:11-alpine-postgis-ram
         environment:
           POSTGRES_USER: root
-          POSTGRES_DB: myapp_development
+          POSTGRES_DB: myapp_test
     working_directory: ~/repo
     steps:
       - checkout
