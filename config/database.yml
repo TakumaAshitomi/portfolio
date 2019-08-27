@@ -3,9 +3,9 @@ default: &default
   encode: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: root #<%= ENV['PG_USERNAME'] %>
-  password: password #<%= ENV['PG_PASSWORD'] %>
-  host:     db #<%= ENV['IP'] %>
+  username: root
+  password: password
+  host:     db
   template: template0
 
 development:
