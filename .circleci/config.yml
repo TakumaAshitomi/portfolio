@@ -57,6 +57,9 @@ jobs:
       - run: bundle exec rake db:schema:load
       # Rspec
       - run:
+          command: chromedriver
+          background: true
+      - run:
           name: Rspec
           command: bundle exec rspec
 
