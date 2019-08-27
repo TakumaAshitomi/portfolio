@@ -2,8 +2,8 @@
 
 require "rails_helper"
 
-RSpec.feature "User", type: :system do
-  scenario "Create a new user" do
+RSpec.describe "User", type: :system do
+  it "Create a new user" do
     visit new_user_registration_path
     fill_in   "user_name",                    with: "testuser"
     fill_in   "user_email",                   with: "example@tutorial.com"
@@ -13,7 +13,7 @@ RSpec.feature "User", type: :system do
     expect(page).to have_content "確認メールを登録したメールアドレス宛に送信しました。"
   end
 
-  scenario "Login with valid email,password" do
+  it "Login with valid email,password" do
     @user = create(:user)
     visit new_user_session_path
     @user.confirm
@@ -23,7 +23,7 @@ RSpec.feature "User", type: :system do
     expect(page).to have_content "ログインしました。"
   end
 
-  scenario "Failed login" do
+  it "Failed login" do
     @user = create(:user)
     visit new_user_session_path
     @user.confirm
@@ -33,7 +33,7 @@ RSpec.feature "User", type: :system do
     expect(page).to have_content "メールアドレスまたはパスワードが無効です。"
   end
 
-  scenario "Edit fill_in all form" do
+  it "Edit fill_in all form" do
     @user = create(:user)
     @user.confirm
     login_as(@user)
@@ -51,7 +51,7 @@ RSpec.feature "User", type: :system do
     expect(page).to have_content "ログインしました。"
   end
 
-  scenario "Edit fill in all form except new password" do
+  it "Edit fill in all form except new password" do
     @user = create(:user)
     @user.confirm
     login_as(@user)
@@ -67,7 +67,7 @@ RSpec.feature "User", type: :system do
     expect(page).to have_content "ログインしました。"
   end
 
-  scenario "Edit profile at mypage" do
+  it "Edit profile at mypage" do
     @user = create(:user)
     @user.confirm
     login_as(@user)
@@ -77,7 +77,7 @@ RSpec.feature "User", type: :system do
     expect(page).to have_content "update profile"
   end
 
-  scenario "Not logged in user can't open pages required login" do
+  it "Not logged in user can't open pages required login" do
     visit "/users/1"
     visit edit_user_registration_path
     expect(page).to have_content "ログインまたは登録が必要です。"
@@ -85,7 +85,7 @@ RSpec.feature "User", type: :system do
     expect(page).to have_content "ログインしてください。"
   end
 
-  scenario "Can search with ransack form" do
+  it "Can search with ransack form" do
     @user = create(:user)
     @user.confirm
     @user2 = create(:user)

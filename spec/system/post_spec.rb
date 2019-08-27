@@ -2,8 +2,8 @@
 
 require "rails_helper"
 
-RSpec.feature "Post", type: :system do
-  scenario "User creates a new post without tag" do
+RSpec.describe "Post", type: :system do
+  it "User creates a new post without tag" do
     user = create(:user)
     login(user)
     visit posts_new_path
@@ -13,7 +13,7 @@ RSpec.feature "Post", type: :system do
     expect(page).to have_content "作成しました。"
   end
 
-  scenario "Can edit by owner" do
+  it "Can edit by owner" do
     user = create(:user)
     login(user)
     post = create(:post, user_id: user.id)
@@ -24,7 +24,7 @@ RSpec.feature "Post", type: :system do
     expect(page).to have_content "変更しました。"
   end
 
-  scenario "Can delete by owner", js: true do
+  it "Can delete by owner", js: true do
     user = create(:user)
     login(user)
     visit posts_new_path
@@ -40,7 +40,7 @@ RSpec.feature "Post", type: :system do
     expect(page).to have_content "削除しました"
   end
 
-  scenario "Can see by followed user", js: true do
+  it "Can see by followed user", js: true do
     user = create(:user)
     user2 = create(:user)
     user2.confirm
@@ -53,14 +53,14 @@ RSpec.feature "Post", type: :system do
     expect(page).to have_content post.title.to_s
   end
 
-  scenario "Not logged in user can't open pages required login" do
+  it "Not logged in user can't open pages required login" do
     visit "/posts/new"
     expect(page).to have_content "ログインしてください。"
     visit "/posts/1/edit"
     expect(page).to have_content "ログインしてください。"
   end
 
-  scenario "Can search with ransack form" do
+  it "Can search with ransack form" do
     user = create(:user)
     post = create(:post, user_id: user.id)
     post2 = create(:post, title: "none", user_id: user.id)
@@ -73,7 +73,7 @@ RSpec.feature "Post", type: :system do
     expect(page).to_not have_content post2.title
   end
 
-  scenario "Can create with tag" do
+  it "Can create with tag" do
     user = create(:user)
     login(user)
     visit posts_new_path
@@ -84,7 +84,7 @@ RSpec.feature "Post", type: :system do
     expect(page).to have_content "作成しました。"
   end
 
-  scenario "Search posts with taglist" do
+  it "Search posts with taglist" do
     user = create(:user, id: 1)
     login(user)
     create(:post, tag_list: "tagA")

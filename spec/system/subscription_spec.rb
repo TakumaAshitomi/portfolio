@@ -2,8 +2,8 @@
 
 require "rails_helper"
 
-RSpec.feature "Subscription", type: :system do
-  scenario "User can subscribe a user", js: true do
+RSpec.describe "Subscription", type: :system do
+  it "User can subscribe a user", js: true do
     user = create(:user)
     login(user)
     visit posts_new_path
