@@ -64,7 +64,7 @@ jobs:
       - run: sudo apt upgrade
       - run:
           name: Rspec
-          command: bundle exec rspec
+          command: bundle exec rspec spec/models/
 
 workflows:
   version: 2
