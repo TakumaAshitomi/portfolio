@@ -22,7 +22,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post.user_id = current_user.id if @post == Post.new(post_params)
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
     if @post.save
       @post.create_activity :create, owner: current_user
       flash[:notice] = "作成しました。"

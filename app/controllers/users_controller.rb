@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if can? :update, @user && current_user_path?(@user.id)
+    if can? :update, @user
       @user.update_attributes(user_profile)
     else
       flash[:notice] = "権限がありません"

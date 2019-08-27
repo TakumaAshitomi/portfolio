@@ -2,8 +2,8 @@
 
 require "rails_helper"
 
-RSpec.describe "Post", type: :system do
-  it "User creates a new post without tag" do
+RSpec.feature "Post", type: :system do
+  scenario "User creates a new post without tag" do
     user = create(:user)
     login(user)
     visit posts_new_path
@@ -13,7 +13,7 @@ RSpec.describe "Post", type: :system do
     expect(page).to have_content "作成しました。"
   end
 
-  it "Can edit by owner" do
+  scenario "Can edit by owner" do
     user = create(:user)
     login(user)
     post = create(:post, user_id: user.id)
@@ -24,7 +24,7 @@ RSpec.describe "Post", type: :system do
     expect(page).to have_content "変更しました。"
   end
 
-  it "Can delete by owner", js: true do
+  scenario "Can delete by owner", js: true do
     user = create(:user)
     login(user)
     visit posts_new_path
@@ -40,27 +40,26 @@ RSpec.describe "Post", type: :system do
     expect(page).to have_content "削除しました"
   end
 
-  it "Can see by followed user", js: true do
+  scenario "Can see by followed user", js: true do
     user = create(:user)
     user2 = create(:user)
     user2.confirm
     login(user)
     Subscription.create(user_id: user.id, followed_id: user2.id)
-    post = Post.create(title: "test", description: "test",
-                       user_id: user2.id.to_s)
+    post = Post.create(title: "test", description: "test", user_id: user2.id.to_s)
     visit "/users/#{user.id}"
     click_on "Activity"
     expect(page).to have_content post.title.to_s
   end
 
-  it "Not logged in user can't open pages required login" do
+  scenario "Not logged in user can't open pages required login" do
     visit "/posts/new"
     expect(page).to have_content "ログインしてください。"
     visit "/posts/1/edit"
     expect(page).to have_content "ログインしてください。"
   end
 
-  it "Can search with ransack form" do
+  scenario "Can search with ransack form" do
     user = create(:user)
     post = create(:post, user_id: user.id)
     post2 = create(:post, title: "none", user_id: user.id)
@@ -73,7 +72,7 @@ RSpec.describe "Post", type: :system do
     expect(page).to_not have_content post2.title
   end
 
-  it "Can create with tag" do
+  scenario "Can create with tag" do
     user = create(:user)
     login(user)
     visit posts_new_path
@@ -84,7 +83,7 @@ RSpec.describe "Post", type: :system do
     expect(page).to have_content "作成しました。"
   end
 
-  it "Search posts with taglist" do
+  scenario "Search posts with taglist" do
     user = create(:user, id: 1)
     login(user)
     create(:post, tag_list: "tagA")
