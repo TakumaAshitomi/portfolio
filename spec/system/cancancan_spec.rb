@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# require "rails_helper"
+require "rails_helper"
 
 RSpec.feature "Cancancan", type: :system do
   scenario "Admin user can see manage page" do

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# require "rails_helper"
+require "rails_helper"
 
 RSpec.feature "Post", type: :system do
   scenario "User creates a new post without tag" do

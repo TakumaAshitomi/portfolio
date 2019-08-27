@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# require "rails_helper"
+require "rails_helper"
 
 RSpec.feature "User", type: :system do
   scenario "Create a new user" do
