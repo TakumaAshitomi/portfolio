@@ -40,9 +40,14 @@ jobs:
           POSTGRES_USER: root
           POSTGRES_DB: myapp_test
           POSTGRES_PASSWORD: password
+      - image: selenium/standalone-chrome:3.141.59-dubnium
     working_directory: ~/repo
     steps:
+      - run:
+          command: chromedriver
+          background: true
       - checkout
+      - run: npm install
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -57,9 +62,6 @@ jobs:
       - run: bundle exec rake db:schema:load
       # Rspec
       - run: mkdir test-reports
-      - run:
-          command: chromedriver
-          background: true
       - run: sudo apt update
       - run: sudo apt upgrade
       - run:
