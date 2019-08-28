@@ -43,11 +43,10 @@ jobs:
       - image: selenium/standalone-chrome:3.141.59-dubnium
         ports:
           - 4444:4444
+        environment:
+          - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
     working_directory: ~/repo
     steps:
-      - run:
-          command: chromedriver
-          background: true
       - checkout
       - run: npm install
       - restore_cache:
@@ -66,6 +65,9 @@ jobs:
       - run: mkdir test-reports
       - run: sudo apt update
       - run: sudo apt upgrade
+      - run:
+          command: chromedriver
+          background: true
       - run:
           name: Rspec
           command: bundle exec rspec
