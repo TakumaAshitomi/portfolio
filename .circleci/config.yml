@@ -31,7 +31,7 @@ jobs:
 
   rspec:
     docker:
-      - image: circleci/ruby:2.5.3-stretch-node-browsers
+      - image: circleci/ruby:2.5.3-node-browsers
         environment:
           RAILS_ENV: test
           POSTGRES_HOST: 127.0.0.1
@@ -40,15 +40,10 @@ jobs:
           POSTGRES_USER: root
           POSTGRES_DB: myapp_test
           POSTGRES_PASSWORD: password
-      - image: selenium/standalone-chrome:3.141.59-dubnium
-        ports:
-          - 4444:4444
-        environment:
-          - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
+      - image: circleci/node:jessie-browsers
     working_directory: ~/repo
     steps:
       - checkout
-      - run: npm install
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -63,14 +58,18 @@ jobs:
       - run: bundle exec rake db:schema:load
       # Rspec
       - run: mkdir test-reports
+      - run:
+          name: Download Selenium
+          command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+      - run:
+          name: Start Selenium
+          command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
+          background: true
       - run: sudo apt update
       - run: sudo apt upgrade
       - run:
-          command: chromedriver
-          background: true
-      - run:
           name: Rspec
-          command: bundle exec rspec
+          command: bundle exec rspec spec/models/
 
 workflows:
   version: 2
