@@ -41,6 +41,8 @@ jobs:
           POSTGRES_DB: myapp_test
           POSTGRES_PASSWORD: password
       - image: selenium/standalone-chrome:3.141.59-dubnium
+        ports:
+          - 4444:4444
     working_directory: ~/repo
     steps:
       - run:
@@ -66,7 +68,7 @@ jobs:
       - run: sudo apt upgrade
       - run:
           name: Rspec
-          command: bundle exec rspec spec/models/
+          command: bundle exec rspec
 
 workflows:
   version: 2
