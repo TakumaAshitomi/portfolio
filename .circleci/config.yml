@@ -70,7 +70,7 @@ jobs:
           command: docker-compose build
   deploy:
     machine:
-      image: circleci/circleci/ruby:2.5.3-node-browsers
+      image: circleci/classic:edge
     steps:
       - checkout
       - run:
