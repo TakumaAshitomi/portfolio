@@ -52,7 +52,7 @@
               <% @activities.first(5).each do |activity| %>
                 <div class="row bg-light m-3 rounded shadow-lg">
                   <div class="col-sm-3"><%=  image_tag user_image(activity.owner), class:"avatar-sm" %></div>
-                  <div class="col-4 col-sm-5 align-self-center h5"><%= link_to activity.trackable.title, "/posts/#{activity.trackable.id}", class: "text-reset" %></div>
+                  <div class="col-4 col-sm-5 align-self-center h5"><%= link_to activity.trackable.title, "/posts/#{activity.trackable_id}", class: "text-reset" %></div>
                   <div class="col-4 align-self-center"><%= link_to activity.owner.name, "/users/#{activity.owner.id}", class: "text-reset" %></div>
                 </div>
               <% end %>
