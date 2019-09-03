@@ -77,5 +77,4 @@ RSpec.feature "Post", type: :system do
     expect(page).to have_content "tagA"
     expect(page).to_not have_content "tagB"
   end
-
 end
