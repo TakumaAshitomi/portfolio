@@ -5,6 +5,7 @@
       <!--<p class="lead text-center m-2 sub-text-color display-3">Coachingは、あなたの活動を<br>サポートします。</p>-->
       <div class="text-center">
         <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-light btn-lg center-block m-2"%>
+        <%= link_to "ゲストユーザーでログイン", "/users/guestlogin", class: "btn btn-outline-light btn-lg center-block m-2", method: "POST" %>
         <%= search_form_for @query, url: posts_path do |f| %>
           <%= f.text_field :title_cont, placeholder: "おいしいカレーの作り方", class: "form-control mt-2 sub-color" %>
           <%= f.submit "検索してみよう！", class: "btn btn-outline-light btn-lg my-3" %>

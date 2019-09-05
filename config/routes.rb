@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "static_pages#home"
   get  "users"     => "users#index"
+  post "users/guestlogin" => "users#guestlogin"
   post "users/:id" => "users#update"
   post "users/:id/subs" => "users#subscribe"
   delete "users/:id" => "users#destroy"

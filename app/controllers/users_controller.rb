@@ -36,6 +36,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def guestlogin
+    guest_user
+    flash[:notice] = "ゲストユーザーとしてログインしました。"
+    redirect_to root_path
+  end
+
   def subscribe
     @subscribe = Subscription.new
     @subscribe.user_id = current_user.id
@@ -60,7 +66,7 @@ class UsersController < ApplicationController
   private
 
   def sign_in_required
-    return if user_signed_in?
+    return if current_or_guest_user
 
     flash[:notice] = "ログインしてください。"
     redirect_to new_user_session_url
