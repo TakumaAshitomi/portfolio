@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_account_update_params, if: :devise_controller?
 
   def after_sign_in_path_for(_resource)
-    users_path
+    root_path
   end
 
   protected
