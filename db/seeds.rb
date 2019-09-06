@@ -7,10 +7,9 @@
     password: "password",
     user_profile: Faker::Quote.famous_last_words
   )
-
+end
 User.create(
-  name: "Guest"
-  email: "Guest@mail.com"
+  name: "Guest",
+  email: "Guest@mail.com",
   password: "password"
 )
-end
