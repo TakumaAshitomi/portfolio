@@ -21,7 +21,8 @@
 
   <div class="text-center mb-4">
     <%= f.submit "ログイン",class:"btn btn-outline-dark btn-lg center-block" %>
-  </div>
+    <%= link_to "ゲストユーザーでログイン", user_session_path(user:{email: "Guest@mail.com", password: "password"}), class: "btn btn-outline-dark btn-lg center-block m-2", method: "POST" %>
+    </div>
 <% end %>
 
 </div>
