@@ -23,4 +23,4 @@ production:
   pool: 5
   username: <%= ENV['PG_USERNAME'] %>
   password: <%= ENV['PG_PASSWORD'] %>
-  
+  database: myapp_production
