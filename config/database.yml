@@ -21,6 +21,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: Rails.application.credentials.pg[:username]
-  password: Rails.application.credentials.pg[:password]
+  username: banana
+  password: Atom1012
   database: myapp_production
