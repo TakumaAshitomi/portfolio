@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server "52.192.135.162", user: "takuma", roles: %w{app db web}
+server "52.192.135.162", user: "takuma", roles: %w[app db web]
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-set :ssh_options, {
-  keys: %w(~/.ssh/id_rsa),
-  forward_agent: true,
-  auth_methods: %w(publickey)
-}
+set :ssh_options,
+    keys: %w[~/.ssh/id_rsa],
+    forward_agent: true,
+    auth_methods: %w[publickey]
 
 # role-based syntax
 # ==================
@@ -24,8 +25,6 @@ set :ssh_options, {
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
-
-
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb
@@ -33,8 +32,6 @@ set :ssh_options, {
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-
-
 
 # Custom SSH Options
 # ==================

@@ -45,6 +45,7 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
     - 'config/environments/*'
+  Max: 100
 
 Lint/UselessAssignment:
   Exclude:
@@ -66,3 +67,9 @@ Lint/RequireParentheses:
 Metrics/AbcSize:
   Enabled: true
   Max: 25
+
+Style/GlobalVars:
+  Enabled: false
+
+Lint/HandleExceptions:
+  Enabled: false
