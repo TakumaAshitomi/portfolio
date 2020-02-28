@@ -21,6 +21,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: <%= ENV['PG_USERNAME'] %>
-  password: <%= ENV['PG_PASSWORD'] %>
+  username: Rails.application.credentials.pg[:username]
+  password: Rails.application.credentials.pg[:password]
   database: myapp_production
