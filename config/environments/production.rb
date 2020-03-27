@@ -13,17 +13,17 @@ Rails.application.configure do
   config.log_tags = [:request_id]
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = {
-    host: "https://damp-reaches-55435.herokuapp.com"
+    host: "http://coaching-web-app.ml/"
   }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name: ENV["SENDGRID_ID"],
-    password: ENV["SENDGRID_PASSWORD"],
-    domain: "heroku.com",
-    address: "smtp.sendgrid.net",
+    user_name: Rails.application.credentials.ses[:access_key_id],
+    password: Rails.application.credentials.ses[:secret_access_key],
+    domain: "coaching-web-app.ml",
+    address: "email-smtp.us-west-2.amazonaws.com",
     port: 587,
-    authentication: :plain,
+    authentication: :login,
     enable_starttls_auto: true
   }
   config.i18n.fallbacks = true
