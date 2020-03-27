@@ -33,6 +33,7 @@ gem "ransack"
 gem "pg", "1.1.4"
 gem "acts-as-taggable-on", "~> 6.0"
 gem "nokogiri", ">= 1.10.4"
+gem 'aws-ses'
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
