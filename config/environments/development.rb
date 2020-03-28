@@ -22,16 +22,15 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = "coaching-web-app.ml"
+  host = "localhost:3000"
   config.action_mailer.default_url_options = { host: host }
   config.action_mailer.perform_caching = false
   config.action_mailer.smtp_settings = {
-    user_name: Rails.application.credentials.ses[:access_key_id],
-    password: Rails.application.credentials.ses[:secret_access_key],
-    domain: "coaching-web-app.ml",
-    address: "email-smtp.us-west-2.amazonaws.com",
+    address: "smtp.gmail.com",
     port: 587,
-    authentication: :login,
+    user_name: ENV["GMAIL_ADDRESS"],
+    password: ENV["GMAIL_PASSWORD"],
+    authentication: :plain,
     enable_starttls_auto: true
   }
   config.active_support.deprecation = :log
