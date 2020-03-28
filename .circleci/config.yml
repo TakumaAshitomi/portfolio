@@ -6,7 +6,7 @@ jobs:
         environment:
           RAILS_ENV: test
           POSTGRES_HOST: 127.0.0.1
-      - image: postgres:11
+      - image: circleci/postgres:11-alpine-postgis-ram
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: myapp_test
@@ -34,7 +34,7 @@ jobs:
         environment:
           RAILS_ENV: test
           POSTGRES_HOST: 127.0.0.1
-      - image: postgres:11
+      - image: circleci/postgres:11-alpine-postgis-ram
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: myapp_test
