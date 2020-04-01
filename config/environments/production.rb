@@ -11,6 +11,7 @@ Rails.application.configure do
   config.assets.compile = true
   config.log_level = :debug
   config.log_tags = [:request_id]
+  config.force_ssl = true
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = {
     host: "coaching-web-app.ml"

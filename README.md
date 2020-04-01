@@ -1,5 +1,5 @@
 # Coaching
-## https://damp-reaches-55435.herokuapp.com/
+## https://coaching-web-app.ml
 
 ユーザー同士で得意な物のコーチングを共有するサイトです。
 
@@ -18,18 +18,24 @@
     - モデルテスト・自動テスト
     - rubocopにてコード整形
     
-- 開発環境
+- 使用技術
     - 言語
         - Ruby (2.5.3)
         - Ruby on Rails 5.2.3
     - 環境
-        - Docker
-        - Docker-compose
-        - circleCIで自動テスト/herokuに自動デプロイ
+        - 開発環境
+            - Docker
+            - Docker-compose
+            - Capistranoで自動デプロイ
+            - circleCIで自動テスト
+        - 本番環境
+            - AWS
+                - EC2
+                - VPC
+                - SES
+                - S3
+                - Route53
+                - ALB
+                - ACM
     - DB
         - postgreSQL
-    - 本番環境
-        - Heroku
-            - Sendgrid
-        - 画像保存先
-            - AWS S3
