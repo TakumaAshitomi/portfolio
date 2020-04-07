@@ -61,12 +61,22 @@ jobs:
           name: Rspec
           command: bundle exec rspec          
   deploy:
-    - add_ssh_keys:
-        fingerprints:
-          - "8e:25:2c:ff:16:ea:0d:85:44:c5:86:ca:05:0d:97:39"
-    - deploy:
-        name: Capistrano deploy
-        command: bundle exec cap production deploy
+    docker:
+      - image: circleci/ruby:2.5.3-node-browsers
+      - image: circleci/postgres:11-alpine-postgis-ram
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run :
+          name: bundle install
+          command: bundle check || bundle install
+      - run:
+        - add_ssh_keys:
+            fingerprints:
+              - "8e:25:2c:ff:16:ea:0d:85:44:c5:86:ca:05:0d:97:39"
+      - run:
+          name: Capistrano deploy
+          command: bundle exec cap production deploy
 workflows:
   version: 2
   rubocop_rspec:
