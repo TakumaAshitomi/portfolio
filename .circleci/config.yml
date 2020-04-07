@@ -60,7 +60,7 @@ jobs:
       - run:
           name: Rspec
           command: bundle exec rspec
-  deploy:
+  deploy-job:
     docker:
       - image: circleci/ruby:2.5.3-node-browsers
         environment:
@@ -73,6 +73,9 @@ jobs:
           POSTGRES_PASSWORD: password
     working_directory: ~/repo
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "8e:25:2c:ff:16:ea:0d:85:44:c5:86:ca:05:0d:97:39"
       - checkout
       - restore_cache:
           keys:
@@ -87,13 +90,7 @@ jobs:
       - run: bundle exec rake db:schema:load
       - run: sudo apt update
       - run: sudo apt upgrade
-      - run:
-        - add_ssh_keys:
-            fingerprints:
-              - "8e:25:2c:ff:16:ea:0d:85:44:c5:86:ca:05:0d:97:39"
-      - run:
-          name: Capistrano deploy
-          command: bundle exec cap production deploy
+      - run: bundle exec cap production deploy
 workflows:
   version: 2
   rubocop_rspec:
@@ -106,7 +103,7 @@ workflows:
             branches:
               only:
                 - master
-      - deploy:
+      - deploy-job:
           requires:
             - rubocop
             - rspec
