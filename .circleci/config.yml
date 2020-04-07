@@ -74,7 +74,8 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: sudo pip install awscli
+      - run: sudo apt-get update && sudo apt-get install python3-pip groff-base
+      - run: sudo pip3 install awscli --ignore-installed six
       - run:
           name: "authorize-security-group-ingress"
           command: |
