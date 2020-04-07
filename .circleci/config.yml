@@ -59,17 +59,34 @@ jobs:
       - run: sudo apt upgrade
       - run:
           name: Rspec
-          command: bundle exec rspec          
+          command: bundle exec rspec
   deploy:
     docker:
       - image: circleci/ruby:2.5.3-node-browsers
+        environment:
+          RAILS_ENV: test
+          POSTGRES_HOST: 127.0.0.1
       - image: circleci/postgres:11-alpine-postgis-ram
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: myapp_test
+          POSTGRES_PASSWORD: password
     working_directory: ~/repo
     steps:
       - checkout
-      - run :
-          name: bundle install
-          command: bundle check || bundle install
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+      - run: sudo apt update
+      - run: sudo apt upgrade
       - run:
         - add_ssh_keys:
             fingerprints:
