@@ -76,13 +76,13 @@ jobs:
       - checkout
       - run: sudo pip install awscli
       - run:
-        name: "authorize-security-group-ingress"
-        command: |
-          IP=`curl -s ifconfig.me`
-          echo "#!/bin/bash" > ./sg.sh
-          echo "aws configure set region ap-northeast-1" >> ./sg.sh
-          echo "aws ec2 authorize-security-group-ingress --group-id sg-03d372ee142af623b --protocol tcp --port 22 --cidr ${IP}/32" >> ./sg.sh
-          bash ./sg.sh
+          name: "authorize-security-group-ingress"
+          command: |
+            IP=`curl -s ifconfig.me`
+            echo "#!/bin/bash" > ./sg.sh
+            echo "aws configure set region ap-northeast-1" >> ./sg.sh
+            echo "aws ec2 authorize-security-group-ingress --group-id sg-03d372ee142af623b --protocol tcp --port 22 --cidr ${IP}/32" >> ./sg.sh
+            bash ./sg.sh
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -97,17 +97,17 @@ jobs:
       - run: sudo apt update
       - run: sudo apt upgrade
       - add_ssh_keys:
-        fingerprints:
-          - "b3:46:cd:2b:ba:24:b8:52:20:48:d4:2f:5d:e1:23:75"
+          fingerprints:
+            - "b3:46:cd:2b:ba:24:b8:52:20:48:d4:2f:5d:e1:23:75"
       - run: bundle exec cap production deploy
       - run:
-        name: "revoke-security-group-ingress"
-        command: |
-          IP=`curl -s ifconfig.me`
-          echo "#!/bin/bash" > ./sg.sh
-          echo "aws configure set region ap-northeast-1" >> ./sg.sh
-          echo "aws ec2 revoke-security-group-ingress --group-id sg-03d372ee142af623b --protocol tcp --port 22 --cidr ${IP}/32" >> ./sg.sh
-          bash ./sg.sh
+          name: "revoke-security-group-ingress"
+          command: |
+            IP=`curl -s ifconfig.me`
+            echo "#!/bin/bash" > ./sg.sh
+            echo "aws configure set region ap-northeast-1" >> ./sg.sh
+            echo "aws ec2 revoke-security-group-ingress --group-id sg-03d372ee142af623b --protocol tcp --port 22 --cidr ${IP}/32" >> ./sg.sh
+            bash ./sg.sh
 workflows:
   version: 2
   rubocop_rspec:
