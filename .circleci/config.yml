@@ -59,7 +59,14 @@ jobs:
       - run: sudo apt upgrade
       - run:
           name: Rspec
-          command: bundle exec rspec
+          command: bundle exec rspec          
+  deploy:
+    - add_ssh_keys:
+        fingerprints:
+          - "8e:25:2c:ff:16:ea:0d:85:44:c5:86:ca:05:0d:97:39"
+    - deploy:
+        name: Capistrano deploy
+        command: bundle exec cap production deploy
 workflows:
   version: 2
   rubocop_rspec:
@@ -68,6 +75,14 @@ workflows:
       - rspec:
           requires:
             - rubocop
+          filters:
+            branches:
+              only:
+                - master
+      - deploy:
+          requires:
+            - rubocop
+            - rspec
           filters:
             branches:
               only:
