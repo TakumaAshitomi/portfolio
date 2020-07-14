@@ -1,30 +1,28 @@
-  <div class="mt-5 min-vh-100">
-    <div class="container">
-      <div class="text-center mb-5"><%= image_tag("Coaching-logo.png", class: "logo") %></div>
-      <div class="text-center">
-        <% if not current_user %>
-          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-light btn-lg center-block m-2"%>
-          <%= link_to "ゲストユーザーでログイン", user_session_path(user:{email: "Guest@mail.com", password: "password"}), class: "btn btn-outline-light btn-lg center-block m-2", method: "POST" %>
-        <% end %>
-        <%= search_form_for @query, url: posts_path do |f| %>
-          <%= f.text_field :title_cont, placeholder: "おいしいカレーの作り方", class: "form-control mt-2 sub-color" %>
-          <%= f.submit "検索してみよう！", class: "btn btn-outline-light btn-lg my-3" %>
-        <% end %>
-      </div>
-        <div class="row bg-white">
-          <div class="col-12"><b>  how to use</b>
-          <div class="row p-2">
-            <div class="col-4">検索してみよう
-              <%= image_tag("screenshot1.png", class: "screenshot") %>
-            </div>
-            <div class="col-4">ユーザーをフォローしてみよう
-              <%= image_tag("screenshot2.png", class: "screenshot") %>
-            </div>
-            <div class="col-4">自分でも投稿してみよう
-              <%= image_tag("screenshot3.png", class: "screenshot") %>
-            </div>
-            </div>
-          </div>
-        </div>
+<div class="mt-5 min-vh-100">
+  <div class="container">
+    <div class="text-center mb-5"><%= image_tag("Coaching-logo.png", class: "logo") %></div>
+    <div class="text-center">
+      <% if not current_user %>
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-light btn-lg center-block m-2"%>
+        <%= link_to "ゲストユーザーでログイン", user_session_path(user:{email: "Guest@mail.com", password: "password"}), class: "btn btn-outline-light btn-lg center-block m-2", method: "POST" %>
+      <% end %>
+      <%= search_form_for @query, url: posts_path do |f| %>
+        <%= f.text_field :title_cont, placeholder: "おいしいカレーの作り方", class: "form-control mt-2 sub-color" %>
+        <%= f.submit "検索してみよう！", class: "btn btn-outline-light btn-lg my-3" %>
+      <% end %>
     </div>
   </div>
+  <div class="container bg-white my-5">
+    <div class="row p-2">
+      <div class="col-4"><b>検索してみよう</b>
+        <%= image_tag("screenshot1.png", class: "p-2 screenshot") %>
+      </div>
+      <div class="col-4"><b>フォローしてみよう</b>
+        <%= image_tag("screenshot2.png", class: "p-2 screenshot") %>
+      </div>
+      <div class="col-4"><b>自分でも投稿してみよう</b>
+        <%= image_tag("screenshot3.png", class: "p-2 screenshot") %>
+      </div>
+    </div>
+  </div>
+</div>
