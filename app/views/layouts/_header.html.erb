@@ -16,11 +16,14 @@
       <div class="navbar-nav">
         <% if user_signed_in? %>
           <a class="nav-item nav-link" ><%= link_to 'マイページ', "/users/#{current_user.id}", class: "text-light" %></a>
+          <div class="border mt-3 mb-0"></div>
           <a class="nav-item nav-link" ><%= link_to 'ユーザー一覧', users_path, class: "text-light" %></a>          
           <a class="nav-item nav-link" ><%= link_to 'プロフィール変更', edit_user_registration_path, class: "text-light" %></a>
+          <div class="border mt-3 mb-0"></div>
           <a class="nav-item nav-link" ><%= link_to 'コーチング一覧', posts_path, class: "text-light" %></a>
           <a class="nav-item nav-link" ><%= link_to 'コーチング投稿', posts_new_path, class: "text-light" %></a>
-          <a class="nav-item nav-link" ><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"text-light" %></a>
+          <div class="border mt-3 mb-0"></div>
+          <a class="nav-item nav-link" ><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"text-light mb-3" %></a>
         <% else %>
           <a class="nav-item nav-link" ><%= link_to 'サインアップ', new_user_registration_path, class: "text-light" %></a>
           <a class="nav-item nav-link" ><%= link_to 'ログイン', new_user_session_path, class: "text-light" %></a>
