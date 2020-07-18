@@ -37,13 +37,6 @@ $head_color: #0F8A8A;
   // display: inline-block;
 }
 
-.jumbotron {
-  // background-image: image-url("chalkboard-green-pattern-01.jpg");
-  background-size: cover;
-  background-position: center 60%;
-  background-color: $base_color;
-}
-
 .navbar-toggler {
   border-color: rgba(0,0,0,0);
   .navbar-toggler-icon{
@@ -87,12 +80,10 @@ $head_color: #0F8A8A;
 
 .bg {
   background-color: $base_color;
-  // background-image: image-url("03-light-carpet.png");
 }
 
 .bg-card {
   background-color: #CBE6F3;
-  // background-image: image-url("04-polish-wood.png");
 }
 
 .bg-info { 
