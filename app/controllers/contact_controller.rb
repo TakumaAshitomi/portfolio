@@ -9,18 +9,17 @@ class ContactController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.send_mail(@contact).deliver_now
-      flash[:success] = "お問い合わせを受け付けました。"
-      redirect_to root_path
+      flash[:notice] = "お問い合わせを受け付けました。"
     else
       flash[:notice] = "送信に失敗しました。
         フォームに未入力のものがある可能性があります。"
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   private
 
   def contact_params
-    params.require(:contact).permit(:email, :message)
+    params.require(:contact).permit(:name, :message)
   end
 end
