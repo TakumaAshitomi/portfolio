@@ -3,5 +3,12 @@
 require "rails_helper"
 
 RSpec.describe ContactMailer, type: :mailer do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @contact = build(:contact)
+    ContactMailer.send_mail(@contact).deliver_now
+  end
+
+  it "can send mail" do
+    expect(ActionMailer::Base.deliveries.last.subject).to eq("お問い合わせ通知")
+  end
 end

@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :contact do
     name { "MyString" }
-    massage { "MyString" }
+    message { "MyString" }
   end
 end
