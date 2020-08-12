@@ -8,6 +8,7 @@ AllCops:
     - "db/migrate/*.rb"
     - "bin/*"
     - "spec/rails_helper.rb"
+    - 'config/environments/development.rb'
   DisplayCopNames: true
   TargetRubyVersion: 2.5.3
 
