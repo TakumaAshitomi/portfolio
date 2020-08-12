@@ -5,7 +5,7 @@ class ContactMailer < ApplicationMailer
     @contact = contact
     mail(
       from: "Noreply <noreply@coaching-web-app.ml>",
-      to: ENV["GMAIL_ADDRESS"],
+      to: Rails.application.credentials.gmail[:address],
       subject: "お問い合わせ通知"
     )
   end
