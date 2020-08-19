@@ -13,4 +13,4 @@ User.create(
   email: "Guest@mail.com",
   password: "password",
   confirmed_at: Time.now
-  )
+)
