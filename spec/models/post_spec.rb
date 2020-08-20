@@ -62,5 +62,9 @@ RSpec.describe Post, type: :model do
       @post2.user_id = @user2.id
       expect(@post2).to be_valid
     end
+
+    it "allow create post with image url" do
+      expect(@post.description).to include("content_20070821201759_15.jpg")
+    end
   end
 end
