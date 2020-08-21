@@ -16,6 +16,11 @@ CKEDITOR.editorConfig = function (config) {
     { name: 'others', groups: ['others'] },
     { name: 'about', groups: ['about'] }
   ];
-
+  config.filebrowserBrowseUrl = "/ckeditor/attachment_files";
+  config.filebrowserImageBrowseLinkUrl = "/ckeditor/pictures";
+  config.filebrowserImageBrowseUrl = "/ckeditor/pictures";
+  config.filebrowserImageUploadUrl = "/ckeditor/pictures";
+  config.filebrowserUploadUrl = "/ckeditor/attachment_files";
+  config.allowedContent = true;
   config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,Replace,SelectAll,Scayt,Source,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Anchor,Flash,PageBreak,Iframe,ShowBlocks,Maximize,About,Language,BidiRtl,BidiLtr,CreateDiv,Link,Unlink';
 };
