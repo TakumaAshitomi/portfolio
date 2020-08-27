@@ -25,15 +25,15 @@ RSpec.describe Post, type: :model do
   end
 
   it "disallow title over 15 characters" do
-    @post.title = "a" * 16
+    @post.title = "a" * 21
     @post.valid?
-    expect(@post.errors[:title]).to include("は15文字以内で入力してください")
+    expect(@post.errors[:title]).to include("は20文字以内で入力してください")
   end
 
   it "disallow description over 400 characters" do
-    @post.description = "a" * 401
+    @post.description = "a" * 2001
     @post.valid?
-    expect(@post.errors[:description]).to include("は400文字以内で入力してください")
+    expect(@post.errors[:description]).to include("は2000文字以内で入力してください")
   end
 
   context "when there are two posts" do
