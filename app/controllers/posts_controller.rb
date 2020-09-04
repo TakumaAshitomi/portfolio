@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    replacement_script
     if @post.save
       @post.create_activity :create, owner: current_user
       flash[:notice] = "作成しました。"
@@ -40,6 +41,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if can? :update, @post
+      replacement_script
       @post.update_attributes(post_params)
       if @post.save
         flash[:notice] = "変更しました。"
@@ -84,5 +86,9 @@ class PostsController < ApplicationController
   def no_authority
     flash[:notice] = "権限がありません。"
     redirect_back(fallback_location: root_path)
+  end
+
+  def replacement_script
+    @post.description = @post.description.gsub(/script/, "")
   end
 end
