@@ -10,5 +10,5 @@ class Post < ApplicationRecord
                     uniqueness: { scope: :user_id }
 
   validates :description, presence: true, length: { maximum: 2000 },
-                          exclusion: { in: %w(script meta) }
+                          exclusion: { in: %w(script) }
 end

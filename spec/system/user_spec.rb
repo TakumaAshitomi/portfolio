@@ -30,7 +30,23 @@ RSpec.feature "User", type: :system do
     fill_in "user_email", with: "wrong@mail.address"
     fill_in "user_password", with: "wrong password"
     click_button "ログイン"
-    expect(page).to have_content "メールアドレスまたはパスワードが無効です。"
+    expect(page).to have_content "パスワード又はメールアドレスが違います"
+  end
+
+  scenario "Locked after 4 failed login attempts" do
+    @user = create(:user)
+    visit new_user_session_path
+    @user.confirm
+    4.times do |i|
+      fill_in "user_email", with: @user.email
+      fill_in "user_password", with: "wrong password" + i.to_s
+      click_button "ログイン"
+      expect(page).to have_content "パスワード又はメールアドレスが違います"
+    end
+    fill_in "user_email", with: @user.email
+    fill_in "user_password", with: @user.password
+    click_button "ログイン"
+    expect(page).to have_content "パスワード又はメールアドレスが違います"
   end
 
   scenario "Edit fill_in all form" do
