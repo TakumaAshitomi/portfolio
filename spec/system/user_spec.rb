@@ -7,10 +7,20 @@ RSpec.feature "User", type: :system do
     visit new_user_registration_path
     fill_in   "user_name",                    with: "testuser"
     fill_in   "user_email",                   with: "example@tutorial.com"
+    fill_in   "user_password",                with: "passWo!rd21"
+    fill_in   "user_password_confirmation",   with: "passWo!rd21"
+    click_on  "新規登録"
+    expect(page).to have_content "確認メールを登録したメールアドレス宛に送信しました。リンクを開いてアカウントを有効にして下さい。"
+  end
+
+  scenario "Failed to create a new user if the password is not strong enough" do
+    visit new_user_registration_path
+    fill_in   "user_name",                    with: "testuser"
+    fill_in   "user_email",                   with: "example@tutorial.com"
     fill_in   "user_password",                with: "password"
     fill_in   "user_password_confirmation",   with: "password"
     click_on  "新規登録"
-    expect(page).to have_content "確認メールを登録したメールアドレス宛に送信しました。リンクを開いてアカウントを有効にして下さい。"
+    expect(page).to have_content "パスワードの強度が不足しています。パスワードの長さは8〜70文字とし、大文字と小文字と数字と特殊文字をそれぞれ1文字以上含める必要があります。"
   end
 
   scenario "Login with valid email,password" do
@@ -55,14 +65,14 @@ RSpec.feature "User", type: :system do
     login_as @user
     visit edit_user_registration_path
     fill_in "user_current_password", with: @user.password
-    fill_in "user_password", with: "password_new"
-    fill_in "user_password_confirmation", with: "password_new"
+    fill_in "user_password", with: "passWord!_new21"
+    fill_in "user_password_confirmation", with: "passWord!_new21"
     click_on "更新"
     expect(page).to have_content "アカウントが更新されました。"
     logout
     visit new_user_session_path
     fill_in "user_email", with: @user.email
-    fill_in "user_password", with: "password_new"
+    fill_in "user_password", with: "passWord!_new21"
     click_button "ログイン"
     expect(page).to have_content "ログインしました。"
   end
@@ -78,7 +88,7 @@ RSpec.feature "User", type: :system do
     logout
     visit new_user_session_path
     fill_in "user_email", with: @user.email
-    fill_in "user_password", with: "password"
+    fill_in "user_password", with: @user.password
     click_button "ログイン"
     expect(page).to have_content "ログインしました。"
   end
