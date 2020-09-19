@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   acts_as_taggable
 
   belongs_to :user
+  has_many :hebutton, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 20 },
                     uniqueness: { scope: :user_id }

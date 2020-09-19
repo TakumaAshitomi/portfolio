@@ -10,12 +10,14 @@
           <%= @post.title %>
         </div>
         <div class="col-4">
-          <% if already_pushedhe?(params[:id]) %>
-          <%= link_to "へぇ", "/posts/#{params[:id]}/hebutton", id: "addhe", class: "badge badge-warning", method: :post, remote: true %>
-          <% else %>
-          <%= link_to "へぇを取り消し", "/posts/#{params[:id]}/hebutton", id: "deletehe", class: "badge badge-warning", method: :delete, remote: true %>
-          <% end %>
+          <% if current_user %>
+            <% if already_pushedhe?(params[:id]) %>
+              <%= link_to "へぇ", "/posts/#{params[:id]}/hebutton", id: "addhe", class: "badge badge-warning", method: :post, remote: true %>
+            <% else %>
+              <%= link_to "へぇを取り消し", "/posts/#{params[:id]}/hebutton", id: "deletehe", class: "badge badge-warning", method: :delete, remote: true %>
+            <% end %>
             <%= image_tag "he-button.png" %>
+          <% end %>
         </div>
       </div>
       </div>

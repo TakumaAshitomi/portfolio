@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def deletehe
-    @he = Hebutton.find_by(post_id: params[:id], user_id:current_user.id)
+    @he = Hebutton.find_by(post_id: params[:id], user_id: current_user.id)
     @he.destroy
     respond_to do |format|
       format.html { redirect_to "/posts/#{params[:id]}" }
@@ -97,7 +97,7 @@ class PostsController < ApplicationController
   end
 
   def hebutton_params
-    params.require(:hebutton).permit(:user_id,:post_id)
+    params.require(:hebutton).permit(:user_id, :post_id)
   end
 
   def sign_in_required
