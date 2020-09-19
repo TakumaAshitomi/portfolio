@@ -7,6 +7,26 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def addhe
+    @he = Hebutton.new
+    @he.user_id = current_user.id
+    @he.post_id = params[:id]
+    @he.save
+    respond_to do |format|
+      format.html { redirect_to "/posts/#{params[:id]}" }
+      format.js
+    end
+  end
+
+  def deletehe
+    @he = Hebutton.find_by(post_id: params[:id], user_id:current_user.id)
+    @he.destroy
+    respond_to do |format|
+      format.html { redirect_to "/posts/#{params[:id]}" }
+      format.js
+    end
+  end
+
   def index
     @query = Post.ransack(params[:q])
     @posts = if params[:tag_name]
@@ -74,6 +94,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :description, :tag_list)
+  end
+
+  def hebutton_params
+    params.require(:hebutton).permit(:user_id,:post_id)
   end
 
   def sign_in_required

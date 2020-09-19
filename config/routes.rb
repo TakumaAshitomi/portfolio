@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   post "posts/:id" => "posts#update"
   delete "/posts/:id" => "posts#destroy"
   get  "posts/:id" => "posts#show"
+  post "posts/:id/hebutton" => "posts#addhe"
+  delete "posts/:id/hebutton" => "posts#deletehe"
   get  "managepage" => "management#manage"
   get  "contacts" => "contact#new"
   post "contacts" => "contact#create"
