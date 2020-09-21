@@ -1,1 +1,5 @@
-<%= link_to "へぇ", "/posts/#{params[:id]}/hebutton", id: "addhe", class: "text-reset text-decoration-none", method: :post, remote: true %>
+<div id="addhe">
+              <%= link_to "へぇ", "/posts/#{params[:id]}/hebutton",  class: "badge badge-dark", method: :post, remote: true %>
+              <%= image_tag "he-button.png" %>
+              <%= Hebutton.where(post_id: params[:id]).count %>
+            </div>

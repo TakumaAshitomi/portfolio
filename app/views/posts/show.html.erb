@@ -12,11 +12,18 @@
         <div class="col-4">
           <% if current_user %>
             <% if already_pushedhe?(params[:id]) %>
-              <%= link_to "へぇ", "/posts/#{params[:id]}/hebutton", id: "addhe", class: "badge badge-warning", method: :post, remote: true %>
+            <div id="addhe">
+              <%= link_to "へぇ", "/posts/#{params[:id]}/hebutton",  class: "badge badge-dark", method: :post, remote: true %>
+              <%= image_tag "he-button.png" %>
+              <%= Hebutton.where(post_id: params[:id]).count %>
+            </div>
             <% else %>
-              <%= link_to "へぇを取り消し", "/posts/#{params[:id]}/hebutton", id: "deletehe", class: "badge badge-warning", method: :delete, remote: true %>
+            <div id="deletehe">
+              <%= link_to "へぇ", "/posts/#{params[:id]}/hebutton", class: "badge badge-success", method: :delete, remote: true %>
+              <%= image_tag "he-button.png" %>
+              <%= Hebutton.where(post_id: params[:id]).count %>
+              </div>
             <% end %>
-            <%= image_tag "he-button.png" %>
           <% end %>
         </div>
       </div>
