@@ -11,8 +11,16 @@ RSpec.feature "hebutton", type: :system do
     login(@user2)
     visit "/posts/#{@post.id}"
     click_on "へぇ"
-    expect(page).to have_content "へぇを取り消し"
-    click_on "へぇを取り消し"
-    expect(page).to have_content "へぇ"
+    expect(page).to have_selector "#deletehe"
+    click_on "へぇ"
+    expect(page).to have_selector "#addhe"
+  end
+  scenario "The count change when the button prresed." do
+    login(@user2)
+    visit "/posts/#{@post.id}"
+    click_on "へぇ"
+    expect(page).to have_content Hebutton.where(post_id: @post.id).count
+    click_on "へぇ"
+    expect(page).to have_content Hebutton.where(post_id: @post.id).count
   end
 end

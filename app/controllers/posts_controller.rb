@@ -5,7 +5,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @hecount = Hebutton.where(post_id: params[:id]).count
   end
 
   def addhe
@@ -13,8 +12,6 @@ class PostsController < ApplicationController
     @he.user_id = current_user.id
     @he.post_id = params[:id]
     @he.save
-    @hecount = Hebutton.where(post_id: params[:id]).count
-
     respond_to do |format|
       format.html { redirect_to "/posts/#{params[:id]}" }
       format.js
@@ -24,8 +21,6 @@ class PostsController < ApplicationController
   def deletehe
     @he = Hebutton.find_by(post_id: params[:id], user_id: current_user.id)
     @he.destroy
-    @hecount = Hebutton.where(post_id: params[:id]).count
-
     respond_to do |format|
       format.html { redirect_to "/posts/#{params[:id]}" }
       format.js
