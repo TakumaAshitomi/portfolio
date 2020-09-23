@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   has_many :posts
   has_many :subscription
+  has_many :hebutton, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,

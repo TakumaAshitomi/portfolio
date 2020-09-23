@@ -4,7 +4,30 @@
       <%= image_tag user_image(@post.user),class:"avatar-sm" %>
       <span class="h4"><%= link_to @post.user.name, "/users/#{@post.user.id}", class: "text-reset" %></span>
     </div>
-    <div class="p-2  h1 text-center"><%= @post.title %></div>
+    <div class="p-2  h1 text-center">
+      <div class="row">
+        <div class="col-4 offset-4">
+          <%= @post.title %>
+        </div>
+        <div class="col-4">
+          <% if current_user %>
+            <% if already_pushedhe?(params[:id]) %>
+            <div id="addhe">
+              <%= link_to "へぇ", "/posts/#{params[:id]}/hebutton",  class: "badge badge-dark", method: :post, remote: true %>
+              <%= image_tag "he-button.png" %>
+              <%= Hebutton.where(post_id: params[:id]).count %>
+            </div>
+            <% else %>
+            <div id="deletehe">
+              <%= link_to "へぇ", "/posts/#{params[:id]}/hebutton", class: "badge badge-success", method: :delete, remote: true %>
+              <%= image_tag "he-button.png" %>
+              <%= Hebutton.where(post_id: params[:id]).count %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      </div>
     <div class="p-2 flex-grow-1 text-center bg-light" style="overflow-wrap: break-word; min-height: 500px;"><%== @post.description %></div>
   </div>
 </div>

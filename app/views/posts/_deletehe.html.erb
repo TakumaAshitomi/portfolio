@@ -1,0 +1,5 @@
+<div id="deletehe">
+  <%= link_to "へぇ", "/posts/#{params[:id]}/hebutton", class: "badge badge-success", method: :delete, remote: true %>
+  <%= image_tag "he-button.png" %>
+  <%= Hebutton.where(post_id: params[:id]).count %>
+</div>
