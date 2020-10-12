@@ -28,6 +28,10 @@
         </div>
       </div>
       </div>
-    <div class="p-2 flex-grow-1 text-center bg-light" style="overflow-wrap: break-word; min-height: 500px;"><%== @post.description %></div>
+    <div class="p-2 flex-grow-1 text-center bg-light" style="overflow-wrap: break-word; min-height: 500px;">
+      <%= sanitize @post.description,
+          tags: %w(strong em a b font br p table tbody tr td ol li u img iframe span blockquote pre h1 h2 h3 h4 h5 h6 div strike hr),
+          attributes: %w(href face class src style ta rget frameborder width height color) %>
+    </div>
   </div>
 </div>
