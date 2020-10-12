@@ -36,8 +36,7 @@
 					<div class="row bg-light m-3 rounded round-lg">
 						<% if not @recentposts.nil? %>
 							<% @recentposts.each do |post| %>
-								<div class="col-2 "></div>
-								<div class="col-4"><%=  image_tag user_image(post.user), class:"avatar-sm" %></div>
+								<div class="col-4 offset-2"><%=  image_tag user_image(post.user), class:"avatar-sm" %></div>
 								<div class="col-6 align-self-center h5"><%=  link_to post.title, "/posts/#{post.id}", class: "text-reset" %></div>
 							<% end %>
 						<% end %>
