@@ -1,17 +1,21 @@
 FROM ruby:2.5.3
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get update -qq && \
-    apt-get install -y build-essential \
+    apt-get install --no-install-recommends -y build-essential \
     libpq-dev \
-    nodejs
+    nodejs \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /app_name
 ENV APP_ROOT /app_name
 WORKDIR $APP_ROOT
 
-ADD ./Gemfile $APP_ROOT/Gemfile
-ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
+COPY ./Gemfile $APP_ROOT/Gemfile
+COPY ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
 RUN bundle install
-ADD . $APP_ROOT
+COPY . $APP_ROOT
