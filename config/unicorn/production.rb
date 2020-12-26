@@ -25,7 +25,7 @@ pid $pid
 # ホットデプロイをするかしないかを設定
 preload_app true
 
-befor_exec do
+before_exec do
   ENV["BUNDLE_GEMFILE"] = $app_dir + "/Gemfile"
 end
 
