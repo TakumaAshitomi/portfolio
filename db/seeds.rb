@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-50.times do
+5.times do
   User.create(
     name: Faker::Name.name,
     email: Faker::Internet.email,

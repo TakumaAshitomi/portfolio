@@ -5,7 +5,7 @@ default: &default
   timeout: 5000
   username: root
   password: password
-  host:     <%= ENV['POSTGRES_HOST'] %>
+  host:     db
   template: template0
 
 development:
