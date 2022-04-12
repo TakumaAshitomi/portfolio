@@ -5,7 +5,7 @@ default: &default
   timeout: 5000
   username: root
   password: password
-  host:     <%= ENV['POSTGRES_HOST'] %>
+  host:     db
   template: template0
 
 development:
@@ -21,6 +21,8 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
+  <% if Rails.env.production? %>
   username: <%= Rails.application.credentials.pg[:username] %>
   password: <%= Rails.application.credentials.pg[:password] %>
+  <% end %>
   database: myapp_production

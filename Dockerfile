@@ -7,6 +7,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install --no-install-recommends -y build-essential \
     libpq-dev \
     nodejs \
+    git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -17,5 +18,7 @@ WORKDIR $APP_ROOT
 COPY ./Gemfile $APP_ROOT/Gemfile
 COPY ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
+RUN bundle update
 RUN bundle install
+
 COPY . $APP_ROOT
